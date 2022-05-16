@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import Items from './components/Items';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class App extends React.Component {
         },
         {
           id: 2,
-          title: '<Біла троянда',
+          title: 'Біла троянда',
           img: 'RoseWhite.jpg',
           desc: 'Опис товару',
           category: 'rose',
@@ -79,6 +80,7 @@ class App extends React.Component {
     return (
       <div className="wrapper">
         <Header />
+        <Items items={this.state.items} />
         <Footer />
       </div>
     );
