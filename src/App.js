@@ -7,6 +7,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // oders - сюди будуть додаватися товари, які будуть відображені всередині корзини
+      oders: [],
       items: [
         {
           id: 1,
@@ -74,16 +76,24 @@ class App extends React.Component {
         }
       ]
     }
+    this.addToOrder = this.addToOrder.bind(this);
   }
 
   render() {
     return (
       <div className="wrapper">
         <Header />
-        <Items items={this.state.items} />
+        <Items items={this.state.items} onAdd={this.addToOrder} />
         <Footer />
       </div>
     );
+  }
+
+  // додавання товарів в корзину
+  addToOrder(item) {
+    this.setState({ oders: [...this.state.oders, item] }, () => {
+      console.log(this.state.oders)
+    })
   }
 }
 
