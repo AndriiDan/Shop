@@ -82,7 +82,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <Header />
+        <Header oders={this.state.oders} />
         <Items items={this.state.items} onAdd={this.addToOrder} />
         <Footer />
       </div>
@@ -91,9 +91,7 @@ class App extends React.Component {
 
   // додавання товарів в корзину
   addToOrder(item) {
-    this.setState({ oders: [...this.state.oders, item] }, () => {
-      console.log(this.state.oders)
-    })
+    this.setState({ oders: [...this.state.oders, item] })
   }
 }
 
