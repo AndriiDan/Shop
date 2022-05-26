@@ -6,7 +6,7 @@ import Order from './Order';
 const showOrders = (props) => {
     return (
         <div>
-            {props.oders.map(el => (
+            {props.orders.map(el => (
                 <Order key={el.id} item={el} onDelete={props.onDelete} />
             ))}
         </div>
@@ -38,7 +38,7 @@ export default function Header(props) {
                 <FaShoppingBasket onClick={() => setCartOpen(cartOpen = !cartOpen)} className={`shop-cart-button ${cartOpen && 'active'}`} />
                 {cartOpen && (
                     <div className='shop-cart'>
-                        {props.oders.length > 0 ?
+                        {props.orders.length > 0 ?
                             showOrders(props) : showNothisng()}
 
                     </div>

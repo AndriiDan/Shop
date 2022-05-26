@@ -7,8 +7,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // oders - сюди будуть додаватися товари, які будуть відображені всередині корзини
-      oders: [],
+      // orders - сюди будуть додаватися товари, які будуть відображені всередині корзини
+      orders: [],
       items: [
         {
           id: 1,
@@ -83,7 +83,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <Header oders={this.state.oders} onDelete={this.deleteOrder} />
+        <Header orders={this.state.orders} onDelete={this.deleteOrder} />
         <Items items={this.state.items} onAdd={this.addToOrder} />
         <Footer />
       </div>
@@ -96,7 +96,7 @@ class App extends React.Component {
     let isInArray = false;
 
     // перевірка, чи товар вже є в корзині
-    this.state.oders.forEach(el => {
+    this.state.orders.forEach(el => {
       if (el.id === item.id) {
         isInArray = true
       }
@@ -104,13 +104,14 @@ class App extends React.Component {
 
     // якщо товара немає в корзині, то додати в корзину
     if (!isInArray) {
-      this.setState({ oders: [...this.state.oders, item] })
+      this.setState({ orders: [...this.state.orders, item] })
     }
   }
 
   // видалення товара з корзини
   deleteOrder(id) {
-    console.log(id);
+    // filter створить новий масив, в який ввійдуть всі елементи з orders окрім елемента, id якого сюди передається
+    this.setState({ orders: this.state.orders.filter(el => el.id !== id) })
   }
 
 }
