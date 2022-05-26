@@ -4,11 +4,16 @@ import Order from './Order';
 
 // перебор кожного елемента в корзині
 const showOrders = (props) => {
+    let summa = 0;
+    // Number.parseFloat(el.price) - перетворюємо в число, оскільки в items.price: "" (рядок)
+    props.orders.forEach(el => summa += Number.parseFloat(el.price));
     return (
         <div>
             {props.orders.map(el => (
                 <Order key={el.id} item={el} onDelete={props.onDelete} />
             ))}
+            {/* new Intl.NumberFormat().format(summa) - заокруглює суму до '2-х' знаків після коми (при цінах з 2-ма знаками після коми) */}
+            <p className='summa'>Загальна вартість замовлення: {new Intl.NumberFormat().format(summa)} грн.</p>
         </div>
     )
 }
