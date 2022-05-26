@@ -9,7 +9,9 @@ export class Order extends Component {
                 <h2>{this.props.item.title}</h2>
                 <b>{this.props.item.price} грн.</b>
                 {/* іконка для видалення товару з корзини */}
-                <FaTrash className='delete-icon' />
+                <FaTrash className='delete-icon' onClick={() => {
+                    this.props.onDelete(this.props.item.id)
+                }} />
             </div>
         )
     }

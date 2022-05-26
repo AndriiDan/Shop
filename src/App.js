@@ -77,12 +77,13 @@ class App extends React.Component {
       ]
     }
     this.addToOrder = this.addToOrder.bind(this);
+    this.deleteOrder = this.deleteOrder.bind(this);
   }
 
   render() {
     return (
       <div className="wrapper">
-        <Header oders={this.state.oders} />
+        <Header oders={this.state.oders} onDelete={this.deleteOrder} />
         <Items items={this.state.items} onAdd={this.addToOrder} />
         <Footer />
       </div>
@@ -106,6 +107,12 @@ class App extends React.Component {
       this.setState({ oders: [...this.state.oders, item] })
     }
   }
+
+  // видалення товара з корзини
+  deleteOrder(id) {
+    console.log(id);
+  }
+
 }
 
 export default App;
