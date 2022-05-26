@@ -66,7 +66,7 @@ header .shop-cart {
     padding: 20px 20px 0 20px;
 }
 
-header .shop-cart .empty {
+header .shop-cart .empty h2 {
     font-size: 20px;
     margin-bottom: 20px;
 }
@@ -91,6 +91,20 @@ header .shop-cart .item h2 {
 header .shop-cart .item p {
     color: #797979;
     font-weight: 600;
+}
+
+header .shop-cart .item .delete-icon {
+    color: #cf7272;
+    float: right;
+    position: relative;
+    top: -30px;
+    cursor: pointer;
+    transition: color, transform 500ms ease;
+}
+
+header .shop-cart .item .delete-icon:hover {
+    color: #851414;
+    transform: scale(1.5);
 }
 
 header .presentation {
