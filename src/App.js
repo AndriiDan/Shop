@@ -91,7 +91,20 @@ class App extends React.Component {
 
   // додавання товарів в корзину
   addToOrder(item) {
-    this.setState({ oders: [...this.state.oders, item] })
+    // чи є в корзині
+    let isInArray = false;
+
+    // перевірка, чи товар вже є в корзині
+    this.state.oders.forEach(el => {
+      if (el.id === item.id) {
+        isInArray = true
+      }
+    })
+
+    // якщо товара немає в корзині, то додати в корзину
+    if (!isInArray) {
+      this.setState({ oders: [...this.state.oders, item] })
+    }
   }
 }
 
