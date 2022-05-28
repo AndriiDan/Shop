@@ -10,6 +10,8 @@ class App extends React.Component {
     this.state = {
       // orders - сюди будуть додаватися товари, які будуть відображені всередині корзини
       orders: [],
+      // зберігає елементи, які будуть показані користувачу
+      currentItems: [],
       items: [
         {
           id: 1,
@@ -77,19 +79,38 @@ class App extends React.Component {
         }
       ]
     }
+
+    // при завантаженні сторінки відображати весь масив items
+    this.state.currentItems = this.state.items;
+
     this.addToOrder = this.addToOrder.bind(this);
     this.deleteOrder = this.deleteOrder.bind(this);
+    this.chooseCategory = this.chooseCategory.bind(this);
   }
 
   render() {
     return (
       <div className="wrapper">
         <Header orders={this.state.orders} onDelete={this.deleteOrder} />
-        <Categories />
-        <Items items={this.state.items} onAdd={this.addToOrder} />
+        <Categories chooseCategory={this.chooseCategory} />
+        <Items items={this.state.currentItems} onAdd={this.addToOrder} />
         <Footer />
       </div>
     );
+  }
+
+  // вибрати категорію
+  chooseCategory(category) {
+    // для категорії 'all'
+    if (category === 'all') {
+      this.setState({ currentItems: this.state.items })
+      return
+    }
+
+    // для решти категорій (окрім 'all')
+    this.setState({
+      currentItems: this.state.items.filter(el => el.category === category)
+    })
   }
 
   // додавання товарів в корзину
