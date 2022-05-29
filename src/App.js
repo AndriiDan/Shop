@@ -3,6 +3,7 @@ import Categories from './components/Categories';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Items from './components/Items';
+import ShowFullItem from './components/ShowFullItem';
 
 class App extends React.Component {
   constructor(props) {
@@ -77,7 +78,9 @@ class App extends React.Component {
           category: 'tulip', // Тюльпан
           price: '30'
         }
-      ]
+      ],
+      // відображати модальне вікно з конкретним товаром при "true"
+      showFullItem: false
     }
 
     // при завантаженні сторінки відображати весь масив items
@@ -86,6 +89,7 @@ class App extends React.Component {
     this.addToOrder = this.addToOrder.bind(this);
     this.deleteOrder = this.deleteOrder.bind(this);
     this.chooseCategory = this.chooseCategory.bind(this);
+    this.onShowItem = this.onShowItem.bind(this);
   }
 
   render() {
@@ -93,7 +97,9 @@ class App extends React.Component {
       <div className="wrapper">
         <Header orders={this.state.orders} onDelete={this.deleteOrder} />
         <Categories chooseCategory={this.chooseCategory} />
-        <Items items={this.state.currentItems} onAdd={this.addToOrder} />
+        <Items items={this.state.currentItems} onAdd={this.addToOrder} onShowItem={this.onShowItem} />
+        {/* при showFullItem: true - відобразити <ShowFullItem /> */}
+        {this.state.showFullItem && <ShowFullItem />}
         <Footer />
       </div>
     );
@@ -135,6 +141,11 @@ class App extends React.Component {
   deleteOrder(id) {
     // filter створить новий масив, в який ввійдуть всі елементи з orders окрім елемента, id якого сюди передається
     this.setState({ orders: this.state.orders.filter(el => el.id !== id) })
+  }
+
+  // метод для відображення модального вікна товару при натисненні на картинку товару
+  onShowItem() {
+    this.setState({ showFullItem: !this.state.showFullItem })
   }
 
 }
