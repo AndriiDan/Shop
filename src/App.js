@@ -80,7 +80,9 @@ class App extends React.Component {
         }
       ],
       // відображати модальне вікно з конкретним товаром при "true"
-      showFullItem: false
+      showFullItem: false,
+      // об'єкт який відобразити в модальному вікні
+      fullItem: {}
     }
 
     // при завантаженні сторінки відображати весь масив items
@@ -99,7 +101,7 @@ class App extends React.Component {
         <Categories chooseCategory={this.chooseCategory} />
         <Items items={this.state.currentItems} onAdd={this.addToOrder} onShowItem={this.onShowItem} />
         {/* при showFullItem: true - відобразити <ShowFullItem /> */}
-        {this.state.showFullItem && <ShowFullItem />}
+        {this.state.showFullItem && <ShowFullItem item={this.state.fullItem} onAdd={this.addToOrder} onShowItem={this.onShowItem} />}
         <Footer />
       </div>
     );
@@ -144,8 +146,10 @@ class App extends React.Component {
   }
 
   // метод для відображення модального вікна товару при натисненні на картинку товару
-  onShowItem() {
-    this.setState({ showFullItem: !this.state.showFullItem })
+  onShowItem(item) {
+    // для fullItem присвоєти отриманий конкретний item 
+    this.setState({ fullItem: item });
+    this.setState({ showFullItem: !this.state.showFullItem });
   }
 
 }
