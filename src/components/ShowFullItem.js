@@ -6,7 +6,8 @@ export class ShowFullItem extends Component {
             <div className='full-item'>
                 <div>
                     {/* img повинні знаходитися в папці publik/img */}
-                    <img src={"./img/" + this.props.item.img} onClick={() => this.props.onShowItem(this.props.item)} />
+                    <img src={"./img/" + this.props.item.img} />
+                    <div className='closeModWind' onClick={() => this.props.onShowItem(this.props.item)}>X</div>
                     <h2>{this.props.item.title}</h2>
                     <p>{this.props.item.desc}</p>
                     <b>{this.props.item.price} грн.</b>

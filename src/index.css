@@ -178,6 +178,27 @@ header .presentation::after {
     overflow: auto;
 }
 
+.closeModWind {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: #c5c0c0;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    color: #000;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform, background 500ms ease;
+}
+
+.closeModWind:hover {
+    transform: scale(1.25);
+    background: red;
+}
+
 /* для вложеного div в full-item */
 .full-item>div {
     width: 600px;
