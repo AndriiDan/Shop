@@ -1,0 +1,83 @@
+.full_item {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.425);
+    z-index: 9999;
+    overflow: auto;
+}
+
+/* для вложеного div в full_item */
+.full_item>div {
+    width: 600px;
+    position: relative;
+    margin: 10% auto;
+    padding: 40px 30px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.full_item img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    transition: transform 500ms ease;
+    cursor: pointer;
+}
+
+.full_item .item img:hover {
+    transform: scale(1.05);
+}
+
+.full_item h2,
+.full_item p,
+.full_item b {
+    margin: 10px 20px;
+    color: #333;
+}
+
+.full_item b {
+    color: #5fa36a;
+}
+
+.full_item .add_to_cart {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background: #ca5252;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 500ms ease;
+}
+
+.full_item .add_to_cart:hover {
+    transform: scale(1.5) translateY(-5px);
+}
+
+.closeModWind {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: #c5c0c0;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    color: #000;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform, background 500ms ease;
+}
+
+.closeModWind:hover {
+    transform: scale(1.25);
+    background: red;
+}
