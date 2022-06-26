@@ -1,0 +1,96 @@
+header {
+    position: relative;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+ul.nav {
+    float: right;
+    list-style: none;
+}
+
+ul.nav li {
+    display: inline;
+    margin-left: 25px;
+    cursor: pointer;
+    transition: opacity 500ms ease;
+}
+
+ul.nav li:hover {
+    opacity: 0.5;
+}
+
+.shop_cart_button {
+    float: right;
+    cursor: pointer;
+    transition: color, transform 500ms ease;
+}
+
+.shop_cart_button:hover,
+.shop_cart_button.active {
+    color: #dc3d3d;
+    transform: scale(1.5);
+}
+
+.shop_cart {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 450px;
+    background: rgb(224, 221, 221);
+    -webkit-box-shadow: 10px 18px 15px 3px rgba(194, 194, 194, 0.86);
+    box-shadow: 10px 18px 15px 3px rgba(194, 194, 194, 0.86);
+    z-index: 1000;
+    padding: 20px 20px 0 20px;
+}
+
+.empty h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.summa {
+    float: left;
+    width: 100%;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.presentation {
+    margin: 50px 0;
+    background: url('../../img/bg.jpg');
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center center;
+    /* накласти на зображення колір (background-blend-mode + background-color) */
+    background-blend-mode: multiply;
+    background-color: #bcbcbc;
+    position: relative;
+}
+
+.presentation::before {
+    content: 'Найнижчі ціни';
+    color: rgb(255, 255, 255);
+    position: absolute;
+    top: 460px;
+    left: 150px;
+    width: 300px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.presentation::after {
+    content: 'Найкращі квіти на ваш вибір';
+    color: rgb(255, 255, 255);
+    position: absolute;
+    top: 428px;
+    left: 150px;
+    width: 400px;
+    font-size: 20px;
+    font-weight: 600;
+}

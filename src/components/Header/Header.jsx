@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaShoppingBasket } from "react-icons/fa";
-import Order from './Order';
+import Order from './Order/Order';
+import classes from './Header.module.css';
 
 // перебор кожного елемента в корзині
 const showOrders = (props) => {
@@ -13,7 +14,7 @@ const showOrders = (props) => {
                 <Order key={el.id} item={el} onDelete={props.onDelete} />
             ))}
             {/* new Intl.NumberFormat().format(summa) - заокруглює суму до '2-х' знаків після коми (при цінах з 2-ма знаками після коми) */}
-            <p className='summa'>Загальна вартість замовлення: {new Intl.NumberFormat().format(summa)} грн.</p>
+            <p className={classes.summa}>Загальна вартість замовлення: {new Intl.NumberFormat().format(summa)} грн.</p>
         </div>
     )
 }
@@ -21,7 +22,7 @@ const showOrders = (props) => {
 // якщо корзина пуста
 const showNothing = () => {
     return (
-        <div className='empty'>
+        <div className={classes.empty}>
             <h2>Товарів не вибрано</h2>
         </div>
     )
@@ -34,16 +35,17 @@ export default function Header(props) {
     return (
         <header>
             <div>
-                <span className='logo'>Flowers-shop</span>
-                <ul className='nav'>
+                <span className={classes.logo}>Flowers-shop</span>
+                <ul className={classes.nav}>
                     <li>Про нас</li>
                     <li>Контакти</li>
                     <li>Кабінет</li>
                 </ul>
                 {/* іконка з корзинкою; ${cartOpen && 'active'} - при cartOpen = true додати className='active'  */}
-                <FaShoppingBasket onClick={() => setCartOpen(cartOpen = !cartOpen)} className={`shop-cart-button ${cartOpen && 'active'}`} />
+                <FaShoppingBasket onClick={() => setCartOpen(cartOpen = !cartOpen)} className={`${classes.shop_cart_button} ${cartOpen && classes.active}`} />
+
                 {cartOpen && (
-                    <div className='shop-cart'>
+                    <div className={classes.shop_cart}>
                         {props.orders.length > 0 ?
                             showOrders(props) : showNothing()}
 
@@ -51,7 +53,7 @@ export default function Header(props) {
                 )}
             </div>
             {/* основний банер магазина */}
-            <div className='presentation'></div>
+            <div className={classes.presentation}></div>
         </header>
     )
 }
