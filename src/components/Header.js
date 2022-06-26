@@ -19,7 +19,7 @@ const showOrders = (props) => {
 }
 
 // якщо корзина пуста
-const showNothisng = () => {
+const showNothing = () => {
     return (
         <div className='empty'>
             <h2>Товарів не вибрано</h2>
@@ -28,6 +28,7 @@ const showNothisng = () => {
 }
 
 export default function Header(props) {
+    // хук для зміни cartOpen за допомогоє ф-ції setCartOpen
     let [cartOpen, setCartOpen] = useState(false);
 
     return (
@@ -44,7 +45,7 @@ export default function Header(props) {
                 {cartOpen && (
                     <div className='shop-cart'>
                         {props.orders.length > 0 ?
-                            showOrders(props) : showNothisng()}
+                            showOrders(props) : showNothing()}
 
                     </div>
                 )}

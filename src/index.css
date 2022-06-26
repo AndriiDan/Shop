@@ -122,7 +122,7 @@ header .presentation {
     height: 500px;
     background-size: cover;
     background-position: center center;
-    /* накласти на зображення колір */
+    /* накласти на зображення колір (background-blend-mode + background-color) */
     background-blend-mode: multiply;
     background-color: #bcbcbc;
     position: relative;
@@ -212,6 +212,7 @@ header .presentation::after {
 main {
     display: flex;
     width: 100%;
+    /* елементи можуть переходити на наступний рядок */
     flex-wrap: wrap;
     justify-content: space-between;
 }
