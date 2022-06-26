@@ -17,10 +17,6 @@ body {
     margin: 50px auto;
 }
 
-
-
-
-
 .full-item {
     position: fixed;
     top: 0;
@@ -103,11 +99,4 @@ body {
 
 .full-item .add-to-cart:hover {
     transform: scale(1.5) translateY(-5px);
-}
-
-footer {
-    text-align: center;
-    margin-top: 100px;
-    font-weight: 400;
-    color: black;
 }

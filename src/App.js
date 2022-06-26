@@ -1,6 +1,6 @@
 import React from 'react';
 import Categories from './components/Categories/Categories';
-import Footer from './components/Footer';
+import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Items from './components/Items/Items';
 import ShowFullItem from './components/ShowFullItem';
