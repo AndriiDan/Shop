@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AboutUs from './components/AboutUs/AboutUs';
 import Contacts from './components/Contacts/Contacts';
 import Flowers from './components/Flowers/Flowers';
@@ -97,17 +98,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="wrapper">
-        <Header orders={this.state.orders} onDelete={this.deleteOrder} />
-        <div className="wrapper-content">
-          <Flowers chooseCategory={this.chooseCategory} items={this.state.currentItems} onAdd={this.addToOrder} onShowItem={this.onShowItem} showFullItem={this.state.showFullItem}
-            fullItem={this.state.fullItem} addToOrder={this.addToOrder} onShowItem={this.onShowItem} />
-          <AboutUs />
-          <Contacts />
-          <Office />
+      <BrowserRouter>
+        <div className="wrapper">
+          <Header orders={this.state.orders} onDelete={this.deleteOrder} />
+          <div className="wrapper-content">
+            <Routes>
+              <Route path="/flowers" element={<Flowers chooseCategory={this.chooseCategory} items={this.state.currentItems} onAdd={this.addToOrder} onShowItem={this.onShowItem} showFullItem={this.state.showFullItem} fullItem={this.state.fullItem} addToOrder={this.addToOrder} onShowItem={this.onShowItem} />} />
+              <Route path="/aboutUs" element={<AboutUs />} />
+              <Route path="/contacts" element={<Contacts />} />
+              <Route path="/office" element={<Office />} />
+            </Routes>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      </BrowserRouter>
     );
   }
 

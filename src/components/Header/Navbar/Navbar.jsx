@@ -5,10 +5,10 @@ import classes from './Navbar.module.css';
 const Navbar = () => {
     return (
         <ul className={classes.nav}>
-            <li>Квіти</li>
-            <li>Про нас</li>
-            <li>Контакти</li>
-            <li>Кабінет</li>
+            <li><a href="/flowers">Квіти</a></li>
+            <li><a href="/aboutUs">Про нас</a></li>
+            <li><a href="/contacts">Контакти</a></li>
+            <li><a href="/office">Кабінет</a></li>
         </ul>
     )
 }
