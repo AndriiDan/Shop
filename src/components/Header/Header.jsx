@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaShoppingBasket } from "react-icons/fa";
 import Order from './Order/Order';
 import classes from './Header.module.css';
+import Navbar from './Navbar/Navbar';
 
 // перебор кожного елемента в корзині
 const showOrders = (props) => {
@@ -36,11 +37,7 @@ export default function Header(props) {
         <header>
             <div>
                 <span className={classes.logo}>Flowers-shop</span>
-                <ul className={classes.nav}>
-                    <li>Про нас</li>
-                    <li>Контакти</li>
-                    <li>Кабінет</li>
-                </ul>
+                <Navbar />
                 {/* іконка з корзинкою; ${cartOpen && 'active'} - при cartOpen = true додати className='active'  */}
                 <FaShoppingBasket onClick={() => setCartOpen(cartOpen = !cartOpen)} className={`${classes.shop_cart_button} ${cartOpen && classes.active}`} />
 

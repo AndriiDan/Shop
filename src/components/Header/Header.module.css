@@ -7,22 +7,6 @@ header {
     font-size: 20px;
 }
 
-ul.nav {
-    float: right;
-    list-style: none;
-}
-
-ul.nav li {
-    display: inline;
-    margin-left: 25px;
-    cursor: pointer;
-    transition: opacity 500ms ease;
-}
-
-ul.nav li:hover {
-    opacity: 0.5;
-}
-
 .shop_cart_button {
     float: right;
     cursor: pointer;
