@@ -1,10 +1,10 @@
 import React from 'react';
-// import Categories from './components/Flowers/Categories/Categories';
+import AboutUs from './components/AboutUs/AboutUs';
+import Contacts from './components/Contacts/Contacts';
 import Flowers from './components/Flowers/Flowers';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
-// import Items from './components/Items/Items';
-// import ShowFullItem from './components/Flowers/ShowFullItem/ShowFullItem';
+import Office from './components/Office/Office';
 
 class App extends React.Component {
   constructor(props) {
@@ -102,6 +102,9 @@ class App extends React.Component {
         <div className="wrapper-content">
           <Flowers chooseCategory={this.chooseCategory} items={this.state.currentItems} onAdd={this.addToOrder} onShowItem={this.onShowItem} showFullItem={this.state.showFullItem}
             fullItem={this.state.fullItem} addToOrder={this.addToOrder} onShowItem={this.onShowItem} />
+          <AboutUs />
+          <Contacts />
+          <Office />
         </div>
         <Footer />
       </div>
