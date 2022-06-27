@@ -10,6 +10,16 @@ ul.nav li {
     transition: opacity 500ms ease;
 }
 
+li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+li a.active {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
 ul.nav li:hover {
     opacity: 0.5;
 }
