@@ -1,9 +1,10 @@
 import React from 'react';
-import Categories from './components/Categories/Categories';
+// import Categories from './components/Flowers/Categories/Categories';
+import Flowers from './components/Flowers/Flowers';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
-import Items from './components/Items/Items';
-import ShowFullItem from './components/ShowFullItem/ShowFullItem';
+// import Items from './components/Items/Items';
+// import ShowFullItem from './components/Flowers/ShowFullItem/ShowFullItem';
 
 class App extends React.Component {
   constructor(props) {
@@ -98,10 +99,10 @@ class App extends React.Component {
     return (
       <div className="wrapper">
         <Header orders={this.state.orders} onDelete={this.deleteOrder} />
-        <Categories chooseCategory={this.chooseCategory} />
-        <Items items={this.state.currentItems} onAdd={this.addToOrder} onShowItem={this.onShowItem} />
-        {/* при showFullItem: true - відобразити <ShowFullItem /> */}
-        {this.state.showFullItem && <ShowFullItem item={this.state.fullItem} onAdd={this.addToOrder} onShowItem={this.onShowItem} />}
+        <div className="wrapper-content">
+          <Flowers chooseCategory={this.chooseCategory} items={this.state.currentItems} onAdd={this.addToOrder} onShowItem={this.onShowItem} showFullItem={this.state.showFullItem}
+            fullItem={this.state.fullItem} addToOrder={this.addToOrder} onShowItem={this.onShowItem} />
+        </div>
         <Footer />
       </div>
     );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './ShowFullItem.module.css';
 
+// к-та для відображення модального вікна вибраної квітки
 export class ShowFullItem extends Component {
     render() {
         return (

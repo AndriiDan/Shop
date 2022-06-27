@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './Categories.module.css';
 
+// к-та для відображення категорій квітів
 export class Categories extends Component {
     constructor(props) {
         super(props);
