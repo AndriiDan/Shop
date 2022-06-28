@@ -6,6 +6,7 @@ import Flowers from './components/Flowers/Flowers';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Office from './components/Office/Office';
+import Reviews from './components/Reviews/Reviews';
 
 class App extends React.Component {
   constructor(props) {
@@ -106,6 +107,7 @@ class App extends React.Component {
               <Route path="/flowers" element={<Flowers chooseCategory={this.chooseCategory} items={this.state.currentItems} onAdd={this.addToOrder} onShowItem={this.onShowItem} showFullItem={this.state.showFullItem} fullItem={this.state.fullItem} addToOrder={this.addToOrder} onShowItem={this.onShowItem} />} />
               <Route path="/aboutUs" element={<AboutUs />} />
               <Route path="/contacts" element={<Contacts />} />
+              <Route path="/reviews" element={<Reviews />} />
               <Route path="/office" element={<Office />} />
             </Routes>
           </div>
