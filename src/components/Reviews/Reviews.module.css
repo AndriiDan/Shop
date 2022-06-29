@@ -1,16 +1,9 @@
 h1 {
     margin-bottom: 30px;
+    margin-left: 20px;
 }
 
 .reviews {
     margin: 10px;
     color: black;
-}
-
-.addReview {
-    margin: 20px 10px;
-}
-
-.addReview textarea {
-    margin: 0 10px;
 }

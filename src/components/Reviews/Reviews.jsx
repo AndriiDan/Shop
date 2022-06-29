@@ -1,4 +1,5 @@
 import React from 'react';
+import AddReview from './AddReview/AddReview';
 import Review from './Review/Review';
 import classes from './Reviews.module.css';
 
@@ -12,10 +13,7 @@ const Reviews = () => {
                 <Review review="Дуже гарні квіти." />
                 <Review review="Замовлення доставили швидко. Дякую." />
             </div>
-            <div className={classes.addReview}>
-                <textarea></textarea>
-                <button>Додати відгук</button>
-            </div>
+            <AddReview />
         </div>
     )
 }
