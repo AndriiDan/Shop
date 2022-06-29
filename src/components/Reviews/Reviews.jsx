@@ -1,4 +1,5 @@
 import React from 'react';
+import Review from './Review/Review';
 import classes from './Reviews.module.css';
 
 // к-та відгуків про магазин
@@ -7,16 +8,15 @@ const Reviews = () => {
         <div>
             <h1>Відгуки про нас:</h1>
             <div className={classes.reviews}>
-                <div className={classes.review}>Дякую, молоці!</div>
-                <div className={classes.review}>Дуже гарні квіти.</div>
-                <div className={classes.review}>Замовлення доставили швидко. Дякую.</div>
+                <Review review="Дякую, молоці!" />
+                <Review review="Дуже гарні квіти." />
+                <Review review="Замовлення доставили швидко. Дякую." />
             </div>
             <div className={classes.addReview}>
                 <textarea></textarea>
                 <button>Додати відгук</button>
             </div>
         </div>
-
     )
 }
 
