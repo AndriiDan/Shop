@@ -5,8 +5,13 @@ import classes from './Review.module.css';
 const Review = (props) => {
     return (
         <div className={classes.review}>
-            <img src={require('../../../img/smile.jpg')} />
+            <div>
+                <img src={require('../../../img/smile.jpg')} />
+            </div>
             <div>{props.review}</div>
+            <div className={classes.like}>
+                {props.likesCount} like
+            </div>
         </div>
     )
 }
