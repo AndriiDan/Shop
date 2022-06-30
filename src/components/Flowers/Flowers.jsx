@@ -11,7 +11,7 @@ const Flowers = (props) => {
             <Categories chooseCategory={props.chooseCategory} />
             <Items items={props.items} onAdd={props.onAdd} onShowItem={props.onShowItem} />
             {/* при showFullItem: true - відобразити <ShowFullItem /> */}
-            {props.showFullItem && <ShowFullItem item={props.fullItem} onAdd={props.addToOrder} onShowItem={props.onShowItem} />}
+            {props.showFullItem && <ShowFullItem item={props.fullItem} onAdd={props.onAdd} onShowItem={props.onShowItem} />}
         </div>
     )
 }

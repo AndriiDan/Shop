@@ -16,80 +16,17 @@ class App extends React.Component {
       orders: [],
       // зберігає елементи, які будуть показані користувачу
       currentItems: [],
-      items: [
-        {
-          id: 1,
-          title: 'Червона троянда',
-          img: 'RoseRed.jpg',
-          desc: 'Опис товару',
-          category: 'rose',
-          price: '35'
-        },
-        {
-          id: 2,
-          title: 'Біла троянда',
-          img: 'RoseWhite.jpg',
-          desc: 'Опис товару',
-          category: 'rose',
-          price: '35'
-        },
-        {
-          id: 3,
-          title: 'Зелена троянда',
-          img: 'RoseGreen.jpg',
-          desc: 'Опис товару',
-          category: 'rose',
-          price: '35'
-        },
-        {
-          id: 4,
-          title: 'Ромашка біла',
-          img: 'ChamomileWhite.jpg',
-          desc: 'Опис товару',
-          category: 'chamomile', // ромашка
-          price: '25'
-        },
-        {
-          id: 5,
-          title: 'Ромашка синя',
-          img: 'ChamomileBlue.jpg',
-          desc: 'Опис товару',
-          category: 'chamomile', // ромашка
-          price: '25'
-        },
-        {
-          id: 6,
-          title: 'Тюльпан червоний',
-          img: 'TulipRed.jpg',
-          desc: 'Опис товару',
-          category: 'tulip', // Тюльпан
-          price: '30'
-        },
-        {
-          id: 7,
-          title: 'Тюльпан фіолетовий',
-          img: 'TulipViolet.jpg',
-          desc: 'Опис товару',
-          category: 'tulip', // Тюльпан
-          price: '30'
-        },
-        {
-          id: 8,
-          title: 'Тюльпан жовтий',
-          img: 'TulipYellow.jpg',
-          desc: 'Опис товару',
-          category: 'tulip', // Тюльпан
-          price: '30'
-        }
-      ],
       // відображати модальне вікно з конкретним товаром при "true"
       showFullItem: false,
       // об'єкт який відобразити в модальному вікні
       fullItem: {}
     }
 
-    // при завантаженні сторінки відображати весь масив items
-    this.state.currentItems = this.state.items;
+    // дані квітів з зовнішнього state
+    this.flowers = props.state.flowersPage.flowers;
+
+    // при завантаженні сторінки відображати весь масив items (flowers)
+    this.state.currentItems = this.flowers;
 
     this.addToOrder = this.addToOrder.bind(this);
     this.deleteOrder = this.deleteOrder.bind(this);
@@ -104,7 +41,7 @@ class App extends React.Component {
           <Header orders={this.state.orders} onDelete={this.deleteOrder} />
           <div className="wrapper-content">
             <Routes>
-              <Route path="/flowers" element={<Flowers chooseCategory={this.chooseCategory} items={this.state.currentItems} onAdd={this.addToOrder} onShowItem={this.onShowItem} showFullItem={this.state.showFullItem} fullItem={this.state.fullItem} addToOrder={this.addToOrder} onShowItem={this.onShowItem} />} />
+              <Route path="/flowers" element={<Flowers chooseCategory={this.chooseCategory} items={this.state.currentItems} onAdd={this.addToOrder} onShowItem={this.onShowItem} showFullItem={this.state.showFullItem} fullItem={this.state.fullItem} />} />
               <Route path="/aboutUs" element={<AboutUs />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/reviews" element={<Reviews reviewsData={this.props.state.reviewsPage.reviewsData} />} />
@@ -121,13 +58,13 @@ class App extends React.Component {
   chooseCategory(category) {
     // для категорії 'all'
     if (category === 'all') {
-      this.setState({ currentItems: this.state.items })
+      this.setState({ currentItems: this.flowers })
       return
     }
 
     // для решти категорій (окрім 'all')
     this.setState({
-      currentItems: this.state.items.filter(el => el.category === category)
+      currentItems: this.flowers.filter(el => el.category === category)
     })
   }
 
