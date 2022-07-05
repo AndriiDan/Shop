@@ -1,3 +1,5 @@
+import { rerenderEntireTree } from "../render";
+
 let state = {
     flowersPage: {
         flowers: [
@@ -84,7 +86,10 @@ export let addNewReview = (review) => {
         likesCount: 0
     };
 
+    // додати в кінець масива новий відгук
     state.reviewsPage.reviewsData.push(newReview);
+    // після зміни state перемалювати все дерево
+    rerenderEntireTree(state);
 }
 
 export default state;

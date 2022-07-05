@@ -1,14 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import state, { addNewReview } from './redux/state';
+import state from "./redux/state";
+import { rerenderEntireTree } from "./render";
 
-console.log(addNewReview)
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App state={state} addNewReview={addNewReview} />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// відмалювати все дерево
+rerenderEntireTree(state);

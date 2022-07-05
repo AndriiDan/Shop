@@ -10,6 +10,8 @@ const AddReview = (props) => {
         // значення з textarea
         let text = newReviewElement.current.value;
         props.addNewReview(text);
+        // обнулити весь текст з textarea
+        newReviewElement.current.value = '';
     }
 
     return (
