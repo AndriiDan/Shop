@@ -44,7 +44,7 @@ class App extends React.Component {
               <Route path="/flowers" element={<Flowers chooseCategory={this.chooseCategory} items={this.state.currentItems} onAdd={this.addToOrder} onShowItem={this.onShowItem} showFullItem={this.state.showFullItem} fullItem={this.state.fullItem} />} />
               <Route path="/aboutUs" element={<AboutUs />} />
               <Route path="/contacts" element={<Contacts />} />
-              <Route path="/reviews" element={<Reviews reviewsData={this.props.state.reviewsPage.reviewsData} />} />
+              <Route path="/reviews" element={<Reviews reviewsData={this.props.state.reviewsPage.reviewsData} addNewReview={this.props.addNewReview} />} />
               <Route path="/office" element={<Office />} />
             </Routes>
           </div>

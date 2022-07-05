@@ -76,4 +76,15 @@ let state = {
     }
 }
 
+// ф-ція для додавання нового відгуку
+export let addNewReview = (review) => {
+    let newReview = {
+        id: 4,
+        review: review,
+        likesCount: 0
+    };
+
+    state.reviewsPage.reviewsData.push(newReview);
+}
+
 export default state;
