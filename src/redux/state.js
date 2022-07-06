@@ -74,21 +74,30 @@ let state = {
             { id: 1, review: "Дякую, молоці!", likesCount: 5 },
             { id: 2, review: "Дуже гарні квіти.", likesCount: 10 },
             { id: 3, review: "Замовлення доставили швидко. Дякую.", likesCount: 7 }
-        ]
+        ],
+        newReviewText: ''
     }
 }
 
 // ф-ція для додавання нового відгуку
-export let addNewReview = (review) => {
+export let addNewReview = () => {
     let newReview = {
         id: 4,
-        review: review,
+        review: state.reviewsPage.newReviewText,
         likesCount: 0
     };
 
     // додати в кінець масива новий відгук
     state.reviewsPage.reviewsData.push(newReview);
+    // обнулити весь текст з textarea компоненти AddReview
+    state.reviewsPage.newReviewText = '';
     // після зміни state перемалювати все дерево
+    rerenderEntireTree(state);
+}
+
+// ф-ція для оновлення тексту в textarea в компоненті AddReview
+export let updateNewReviewText = (newText) => {
+    state.reviewsPage.newReviewText = newText;
     rerenderEntireTree(state);
 }
 

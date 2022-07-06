@@ -22,7 +22,7 @@ const Reviews = (props) => {
                 {/* список відгуків */}
                 <div>{reviewsElements}</div>
             </div>
-            <AddReview addNewReview={props.addNewReview} />
+            <AddReview newReviewText={props.newReviewText} addNewReview={props.addNewReview} updateNewReviewText={props.updateNewReviewText} />
         </div>
     )
 }
