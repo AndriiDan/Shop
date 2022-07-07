@@ -1,5 +1,5 @@
-// для цієї ф-ції замість console.log присвоїться значення з ф-ції subscribe (те, що прийде в ній як callback, тобто rerenderEntireTree з index.js)
-let rerenderEntireTree = () => {
+// для цієї ф-ції замість console.log присвоїться значення з ф-ції subscribe (те, що прийде в ній як callback, тобто callSubscriber з index.js)
+let callSubscriber = () => {
     console.log("state was changed");
 }
 
@@ -98,18 +98,18 @@ export const addNewReview = () => {
     // обнулити весь текст з textarea компоненти AddReview
     state.reviewsPage.newReviewText = '';
     // після зміни state перемалювати все дерево
-    rerenderEntireTree(state);
+    callSubscriber(state);
 }
 
 // ф-ція для оновлення тексту в textarea в компоненті AddReview
 export const updateNewReviewText = (newText) => {
     state.reviewsPage.newReviewText = newText;
-    rerenderEntireTree(state);
+    callSubscriber(state);
 }
 
-// ф-ція "наглядач", щоб прокинути в index.js rerenderEntireTree як callback, щоб не було циклічної залежності між state.js та index.js
+// ф-ція "наглядач", щоб прокинути в index.js callSubscriber як callback, щоб не було циклічної залежності між state.js та index.js
 export const subscribe = (observer) => {
-    rerenderEntireTree = observer;
+    callSubscriber = observer;
 }
 
 export default state;

@@ -5,7 +5,7 @@ import App from './App';
 import state, { addNewReview, subscribe, updateNewReviewText } from "./redux/state";
 
 // ф-ція для перемалювання всьго дерева
-let rerenderEntireTree = (state) => {
+let callSubscriber = (state) => {
     ReactDOM.render(
         <React.StrictMode>
             <App state={state} addNewReview={addNewReview} updateNewReviewText={updateNewReviewText} />
@@ -15,7 +15,7 @@ let rerenderEntireTree = (state) => {
 }
 
 // відмалювати все дерево
-rerenderEntireTree(state);
+callSubscriber(state);
 
-// прокидуємо rerenderEntireTree в state.js
-subscribe(rerenderEntireTree);
+// прокидуємо callSubscriber в state.js
+subscribe(callSubscriber);
