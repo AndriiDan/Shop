@@ -1,4 +1,7 @@
-import { rerenderEntireTree } from "../render";
+// для цієї ф-ції замість console.log присвоїться значення з ф-ції subscribe (те, що прийде в ній як callback, тобто rerenderEntireTree з index.js)
+let rerenderEntireTree = () => {
+    console.log("state was changed");
+}
 
 let state = {
     flowersPage: {
@@ -79,8 +82,11 @@ let state = {
     }
 }
 
+// для можливості перегляду state в консолі (ввести state)
+window.state = state;
+
 // ф-ція для додавання нового відгуку
-export let addNewReview = () => {
+export const addNewReview = () => {
     let newReview = {
         id: 4,
         review: state.reviewsPage.newReviewText,
@@ -96,9 +102,14 @@ export let addNewReview = () => {
 }
 
 // ф-ція для оновлення тексту в textarea в компоненті AddReview
-export let updateNewReviewText = (newText) => {
+export const updateNewReviewText = (newText) => {
     state.reviewsPage.newReviewText = newText;
     rerenderEntireTree(state);
+}
+
+// ф-ція "наглядач", щоб прокинути в index.js rerenderEntireTree як callback, щоб не було циклічної залежності між state.js та index.js
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer;
 }
 
 export default state;
