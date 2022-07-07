@@ -2,20 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import state, { addNewReview, subscribe, updateNewReviewText } from "./redux/state";
+import store from "./redux/state";
 
 // ф-ція для перемалювання всьго дерева
-let callSubscriber = (state) => {
+let rerenderEntireTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state} addNewReview={addNewReview} updateNewReviewText={updateNewReviewText} />
+            <App state={state} addNewReview={store.addNewReview.bind(store)} updateNewReviewText={store.updateNewReviewText.bind(store)} />
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
 
 // відмалювати все дерево
-callSubscriber(state);
+rerenderEntireTree(store.getState());
 
-// прокидуємо callSubscriber в state.js
-subscribe(callSubscriber);
+// прокидуємо rerenderEntireTree в state.js в subscribe
+store.subscribe(rerenderEntireTree);
