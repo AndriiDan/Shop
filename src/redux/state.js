@@ -78,37 +78,40 @@ let store = {
             newReviewText: ''
         }
     },
-    // метод, для взаємодій з state
-    getState() {
-        return this._state;
-    },
     // для цієї ф-ції замість console.log присвоїться значення з ф-ції subscribe (те, що прийде в ній як callback, тобто callSubscriber з index.js)
     _callSubscriber() {
         console.log("state was changed");
     },
-    // ф-ція для додавання нового відгуку
-    addNewReview() {
-        let newReview = {
-            id: 4,
-            review: this._state.reviewsPage.newReviewText,
-            likesCount: 0
-        };
 
-        // додати в кінець масива новий відгук
-        this._state.reviewsPage.reviewsData.push(newReview);
-        // обнулити весь текст з textarea компоненти AddReview
-        this._state.reviewsPage.newReviewText = '';
-        // після зміни state перемалювати все дерево
-        this._callSubscriber(this._state);
-    },
-    // ф-ція для оновлення тексту в textarea в компоненті AddReview
-    updateNewReviewText(newText) {
-        this._state.reviewsPage.newReviewText = newText;
-        this._callSubscriber(this._state);
+    // метод, для взаємодій з state
+    getState() {
+        return this._state;
     },
     // ф-ція "наглядач", щоб прокинути в index.js callSubscriber як callback, щоб не було циклічної залежності між state.js та index.js
     subscribe(observer) {
         this._callSubscriber = observer;
+    },
+
+    // метод dispatch в собі містить багато сценаріїв в залежності від action.type
+    dispatch(action) {
+        if (action.type === 'ADD-NEW-REVIEW') {
+            // для додавання нового відгуку
+            let newReview = {
+                id: 4,
+                review: this._state.reviewsPage.newReviewText,
+                likesCount: 0
+            };
+            // додати в кінець масива новий відгук
+            this._state.reviewsPage.reviewsData.push(newReview);
+            // обнулити весь текст з textarea компоненти AddReview
+            this._state.reviewsPage.newReviewText = '';
+            // після зміни state перемалювати все дерево
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-REVIEW-TEXT') {
+            // для оновлення тексту в textarea в компоненті AddReview
+            this._state.reviewsPage.newReviewText = action.newText;
+            this._callSubscriber(this._state);
+        }
     }
 }
 

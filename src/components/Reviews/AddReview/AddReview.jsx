@@ -7,9 +7,7 @@ const AddReview = (props) => {
     let newReviewElement = React.createRef();
     let addReview = () => {
         // ф-ція додавання відгуку
-        props.addNewReview();
-        // обнулити весь текст з textarea
-        // props.updateNewReviewText('');
+        props.dispatch({ type: 'ADD-NEW-REVIEW' })
     }
 
     // обробник подій для textarea
@@ -17,7 +15,7 @@ const AddReview = (props) => {
         // значення з textarea
         let text = newReviewElement.current.value;
         // оновлення тексту в textarea через оновлення state
-        props.updateNewReviewText(text);
+        props.dispatch({ type: 'UPDATE-NEW-REVIEW-TEXT', newText: text })
     }
 
     return (

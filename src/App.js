@@ -45,8 +45,9 @@ class App extends React.Component {
                 onShowItem={this.onShowItem} showFullItem={this.state.showFullItem} fullItem={this.state.fullItem} />} />
               <Route path="/aboutUs" element={<AboutUs />} />
               <Route path="/contacts" element={<Contacts />} />
-              <Route path="/reviews" element={<Reviews reviewsData={this.props.state.reviewsPage.reviewsData} addNewReview={this.props.addNewReview}
-                newReviewText={this.props.state.reviewsPage.newReviewText} updateNewReviewText={this.props.updateNewReviewText} />} />
+              <Route path="/reviews" element={<Reviews reviewsData={this.props.state.reviewsPage.reviewsData}
+                newReviewText={this.props.state.reviewsPage.newReviewText}
+                dispatch={this.props.dispatch} />} />
               <Route path="/office" element={<Office />} />
             </Routes>
           </div>
