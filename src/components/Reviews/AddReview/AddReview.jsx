@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './AddReview.module.css';
+import { addNewReviewActionCreator, updateNewReviewActionCreator } from '../../../redux/state';
 
 // компонент - "додати відгук"
 const AddReview = (props) => {
@@ -7,7 +8,7 @@ const AddReview = (props) => {
     let newReviewElement = React.createRef();
     let addReview = () => {
         // ф-ція додавання відгуку
-        props.dispatch({ type: 'ADD-NEW-REVIEW' })
+        props.dispatch(addNewReviewActionCreator())
     }
 
     // обробник подій для textarea
@@ -15,7 +16,7 @@ const AddReview = (props) => {
         // значення з textarea
         let text = newReviewElement.current.value;
         // оновлення тексту в textarea через оновлення state
-        props.dispatch({ type: 'UPDATE-NEW-REVIEW-TEXT', newText: text })
+        props.dispatch(updateNewReviewActionCreator(text))
     }
 
     return (

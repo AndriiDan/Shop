@@ -1,3 +1,6 @@
+const ADD_NEW_REVIEW = 'ADD-NEW-REVIEW';
+const UPDATE_NEW_REVIEW_TEXT = 'UPDATE-NEW-REVIEW-TEXT';
+
 let store = {
     // приватний
     _state: {
@@ -94,7 +97,7 @@ let store = {
 
     // метод dispatch в собі містить багато сценаріїв в залежності від action.type
     dispatch(action) {
-        if (action.type === 'ADD-NEW-REVIEW') {
+        if (action.type === ADD_NEW_REVIEW) {
             // для додавання нового відгуку
             let newReview = {
                 id: 4,
@@ -107,13 +110,17 @@ let store = {
             this._state.reviewsPage.newReviewText = '';
             // після зміни state перемалювати все дерево
             this._callSubscriber(this._state);
-        } else if (action.type === 'UPDATE-NEW-REVIEW-TEXT') {
+        } else if (action.type === UPDATE_NEW_REVIEW_TEXT) {
             // для оновлення тексту в textarea в компоненті AddReview
             this._state.reviewsPage.newReviewText = action.newText;
             this._callSubscriber(this._state);
         }
     }
 }
+
+// ActionCreator
+export const addNewReviewActionCreator = () => ({ type: ADD_NEW_REVIEW })
+export const updateNewReviewActionCreator = (text) => ({ type: UPDATE_NEW_REVIEW_TEXT, newText: text })
 
 // для можливості перегляду state в консолі (ввести store)
 window.store = store;
