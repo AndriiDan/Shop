@@ -56,11 +56,21 @@ import Navbar from './Navbar/Navbar';
 // }
 
 export default function Header(props) {
+    // хук для зміни cartOpen за допомогоє ф-ції setCartOpen
+    let [cartOpen, setCartOpen] = useState(false);
+
     return (
         <header>
             <div>
                 <span className={classes.logo}>Flowers-shop</span>
                 <Navbar />
+                {/* іконка з корзинкою; ${cartOpen && 'active'} - при cartOpen = true додати className='active'  */}
+                <FaShoppingBasket onClick={() => setCartOpen(cartOpen = !cartOpen)} className={`${classes.shop_cart_button} ${cartOpen && classes.active}`} />
+
+                {cartOpen && (
+                    <div className={classes.shop_cart}>Корзина</div>
+                )}
+
             </div>
             {/* основний банер магазина */}
             <div className={classes.presentation}></div>

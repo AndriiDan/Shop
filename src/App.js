@@ -45,7 +45,7 @@ class App extends React.Component {
           {/* <Header orders={this.state.orders} onDelete={this.deleteOrder} /> */}
 
 
-          <Header orders={this.state.orders} onDelete={this.deleteOrder} />
+          <Header />
 
 
           <div className="wrapper-content">
