@@ -8,10 +8,15 @@ import ShowFullItem from './ShowFullItem/ShowFullItem';
 const Flowers = (props) => {
     return (
         <div>
-            <Categories chooseCategory={props.chooseCategory} />
-            <Items items={props.items} onAdd={props.onAdd} onShowItem={props.onShowItem} />
+            {/* <Categories chooseCategory={props.chooseCategory} /> */}
+            {/* <Items items={props.items} onAdd={props.onAdd} onShowItem={props.onShowItem} /> */}
+
+
+            <Items items={props.items} />
+
+
             {/* при showFullItem: true - відобразити <ShowFullItem /> */}
-            {props.showFullItem && <ShowFullItem item={props.fullItem} onAdd={props.onAdd} onShowItem={props.onShowItem} />}
+            {/* {props.showFullItem && <ShowFullItem item={props.fullItem} onAdd={props.onAdd} onShowItem={props.onShowItem} />} */}
         </div>
     )
 }
