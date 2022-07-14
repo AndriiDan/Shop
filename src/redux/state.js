@@ -118,6 +118,14 @@ let store = {
         this._callSubscriber(this._state);
     },
 
+    // видалення товара з корзини
+    deleteOrder(id) {
+        // filter створить новий масив, в який ввійдуть всі елементи з orders окрім елемента, id якого сюди передається
+        this._state.flowersPage.orders = this._state.flowersPage.orders.filter(el => el.id !== id);
+        // після зміни state перемалювати все дерево
+        this._callSubscriber(this._state);
+    },
+
 
     // метод dispatch в собі містить багато сценаріїв в залежності від action.type
     dispatch(action) {
