@@ -55,6 +55,29 @@ import Navbar from './Navbar/Navbar';
 //     )
 // }
 
+
+
+// показати вибріні елементи в корзині
+const showOrders = (props) => {
+    return (
+        <div>
+            {/* перебор кожного елемента в корзині */}
+            {props.orders.map(el => (
+                <Order key={el.id} item={el} />
+            ))}
+        </div>
+    )
+};
+
+// якщо корзина пуста
+const showNothing = () => {
+    return (
+        <div className={classes.empty}>
+            <h2>Товарів не вибрано</h2>
+        </div>
+    )
+};
+
 export default function Header(props) {
 
     // хук для зміни cartOpen за допомогоє ф-ції setCartOpen
@@ -70,10 +93,8 @@ export default function Header(props) {
 
                 {cartOpen && (
                     <div className={classes.shop_cart}>
-                        {/* перебор кожного елемента в корзині */}
-                        {props.orders.map(el => (
-                            <Order key={el.id} item={el} />
-                        ))}
+                        {props.orders.length > 0 ?
+                            showOrders(props) : showNothing()}
                     </div>
                 )}
 

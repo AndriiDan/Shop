@@ -100,8 +100,20 @@ let store = {
 
     // додавання товарів в корзину
     addToOrder(item) {
-        // додати в кінець масива новий елемент
-        this._state.flowersPage.orders.push(item);
+        // чи є в корзині елемент з конкретним id
+        let isInArray = false;
+
+        // перевірка, чи товар вже є в корзині
+        this._state.flowersPage.orders.forEach(el => {
+            if (el.id === item.id) {
+                isInArray = true
+            }
+        });
+        // якщо товара немає в корзині, то додати його в корзину в кінець масива
+        if (!isInArray) {
+            this._state.flowersPage.orders.push(item);
+        };
+
         // після зміни state перемалювати все дерево
         this._callSubscriber(this._state);
     },
