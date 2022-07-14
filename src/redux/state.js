@@ -70,7 +70,9 @@ let store = {
                     category: 'tulip', // Тюльпан
                     price: '30'
                 }
-            ]
+            ],
+            // orders - сюди будуть додаватися товари, які будуть відображені всередині корзини
+            orders: [],
         },
         reviewsPage: {
             reviewsData: [
@@ -94,6 +96,16 @@ let store = {
     subscribe(observer) {
         this._callSubscriber = observer;
     },
+
+
+    // додавання товарів в корзину
+    addToOrder(item) {
+        // додати в кінець масива новий елемент
+        this._state.flowersPage.orders.push(item);
+        // після зміни state перемалювати все дерево
+        this._callSubscriber(this._state);
+    },
+
 
     // метод dispatch в собі містить багато сценаріїв в залежності від action.type
     dispatch(action) {

@@ -45,7 +45,7 @@ class App extends React.Component {
           {/* <Header orders={this.state.orders} onDelete={this.deleteOrder} /> */}
 
 
-          <Header />
+          <Header orders={this.props.state.flowersPage.orders} />
 
 
           <div className="wrapper-content">
@@ -54,7 +54,7 @@ class App extends React.Component {
                 onShowItem={this.onShowItem} showFullItem={this.state.showFullItem} fullItem={this.state.fullItem} />} /> */}
 
 
-              <Route path="/flowers" element={<Flowers items={this.props.state.flowersPage.flowers} />} />
+              <Route path="/flowers" element={<Flowers items={this.props.state.flowersPage.flowers} onAdd={this.props.onAdd} />} />
 
 
               <Route path="/aboutUs" element={<AboutUs />} />

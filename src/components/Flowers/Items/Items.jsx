@@ -10,7 +10,7 @@ export class Items extends Component {
                     // <Item key={el.id} item={el} onAdd={this.props.onAdd} onShowItem={this.props.onShowItem} />
 
 
-                    <Item key={el.id} item={el} />
+                    <Item key={el.id} item={el} onAdd={this.props.onAdd} />
 
 
                 ))}

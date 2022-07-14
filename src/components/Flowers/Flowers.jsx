@@ -12,7 +12,7 @@ const Flowers = (props) => {
             {/* <Items items={props.items} onAdd={props.onAdd} onShowItem={props.onShowItem} /> */}
 
 
-            <Items items={props.items} />
+            <Items items={props.items} onAdd={props.onAdd} />
 
 
             {/* при showFullItem: true - відобразити <ShowFullItem /> */}

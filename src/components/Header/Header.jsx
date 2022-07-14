@@ -56,6 +56,7 @@ import Navbar from './Navbar/Navbar';
 // }
 
 export default function Header(props) {
+
     // хук для зміни cartOpen за допомогоє ф-ції setCartOpen
     let [cartOpen, setCartOpen] = useState(false);
 
@@ -68,7 +69,12 @@ export default function Header(props) {
                 <FaShoppingBasket onClick={() => setCartOpen(cartOpen = !cartOpen)} className={`${classes.shop_cart_button} ${cartOpen && classes.active}`} />
 
                 {cartOpen && (
-                    <div className={classes.shop_cart}>Корзина</div>
+                    <div className={classes.shop_cart}>
+                        {/* перебор кожного елемента в корзині */}
+                        {props.orders.map(el => (
+                            <Order key={el.id} item={el} />
+                        ))}
+                    </div>
                 )}
 
             </div>
