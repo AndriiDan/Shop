@@ -55,7 +55,8 @@ class App extends React.Component {
 
 
               <Route path="/flowers" element={<Flowers items={this.props.state.flowersPage.currentItems} onAdd={this.props.onAdd}
-                categories={this.props.state.flowersPage.categories} chooseCategory={this.props.chooseCategory} />} />
+                categories={this.props.state.flowersPage.categories} chooseCategory={this.props.chooseCategory} onShowItem={this.props.onShowItem}
+                showFullItem={this.props.state.flowersPage.showFullItem} />} />
 
 
               <Route path="/aboutUs" element={<AboutUs />} />

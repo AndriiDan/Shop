@@ -157,6 +157,8 @@ let store = {
                 category: 'tulip', // Тюльпан
                 price: '30'
             }],
+            // відображати модальне вікно з конкретним товаром при "true"
+            showFullItem: false,
         },
         reviewsPage: {
             reviewsData: [
@@ -225,6 +227,20 @@ let store = {
         // після зміни state перемалювати все дерево
         this._callSubscriber(this._state);
     },
+
+    // метод для відображення модального вікна товару при натисненні на картинку товару
+    onShowItem() {
+        this._state.flowersPage.showFullItem = !this._state.flowersPage.showFullItem;
+
+        // після зміни state перемалювати все дерево
+        this._callSubscriber(this._state);
+    },
+
+    //   onShowItem(item) {
+    //     // для fullItem присвоєти отриманий конкретний item 
+    //     this.setState({ fullItem: item });
+    //     this.setState({ showFullItem: !this.state.showFullItem });
+    //   }
 
     // метод dispatch в собі містить багато сценаріїв в залежності від action.type
     dispatch(action) {

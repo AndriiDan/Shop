@@ -27,7 +27,7 @@ const Item = (props) => {
     return (
         <div className={classes.item}>
             {/* img повинні знаходитися в папці publik/img */}
-            <img src={"./img/" + props.item.img} />
+            <img src={"./img/" + props.item.img} onClick={() => props.onShowItem()} />
             <h2>{props.item.title}</h2>
             <p>{props.item.desc}</p>
             <b>{props.item.price} грн.</b>
