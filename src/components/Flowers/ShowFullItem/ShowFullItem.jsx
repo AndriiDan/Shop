@@ -32,7 +32,9 @@ const ShowFullItem = (props) => {
         <div className={classes.full_item}>
             <div>
                 {/* img повинні знаходитися в папці publik/img */}
-                <img src={"./img/" + props.item.img} onClick={() => props.onShowItem(props.item)} />
+                <img src={"./img/" + props.item.img} />
+                {/* onShowItem - закрити модальне вікно */}
+                <div className={classes.closeModWind} onClick={() => props.onShowItem(props.item)} >X</div>
                 <h2>{props.item.title}</h2>
                 <p>{props.item.desc}</p>
                 <b>{props.item.price} грн.</b>
