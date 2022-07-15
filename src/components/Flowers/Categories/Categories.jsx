@@ -43,7 +43,7 @@ const Categories = (props) => {
     return (
         <div className={classes.categories}>
             {props.categories.map(el => (
-                <div key={el.key}>{el.name}</div>
+                <div key={el.key} onClick={() => props.chooseCategory(el.key)}>{el.name}</div>
             ))}
         </div>
     )

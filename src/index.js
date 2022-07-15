@@ -10,7 +10,8 @@ let rerenderEntireTree = (state) => {
         <React.StrictMode>
             {/* <App state={state} dispatch={store.dispatch.bind(store)} /> */}
 
-            <App state={state} dispatch={store.dispatch.bind(store)} onAdd={store.addToOrder.bind(store)} onDelete={store.deleteOrder.bind(store)} />
+            <App state={state} dispatch={store.dispatch.bind(store)} onAdd={store.addToOrder.bind(store)} onDelete={store.deleteOrder.bind(store)}
+                chooseCategory={store.chooseCategory.bind(store)} />
 
 
         </React.StrictMode>,

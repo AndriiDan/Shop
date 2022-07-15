@@ -91,6 +91,72 @@ let store = {
                     name: 'Тюльпани'
                 }
             ],
+            // зберігає елементи, які будуть показані користувачу; при першому завантаженні currentItems = flowers (незнаю як присвоїти, тому скопіював)
+            // currentItems: [this._state.flowersPage.flowers],
+            currentItems: [{
+                id: 1,
+                title: 'Червона троянда',
+                img: 'RoseRed.jpg',
+                desc: 'Опис товару',
+                category: 'rose',
+                price: '35'
+            },
+            {
+                id: 2,
+                title: 'Біла троянда',
+                img: 'RoseWhite.jpg',
+                desc: 'Опис товару',
+                category: 'rose',
+                price: '35'
+            },
+            {
+                id: 3,
+                title: 'Зелена троянда',
+                img: 'RoseGreen.jpg',
+                desc: 'Опис товару',
+                category: 'rose',
+                price: '35'
+            },
+            {
+                id: 4,
+                title: 'Ромашка біла',
+                img: 'ChamomileWhite.jpg',
+                desc: 'Опис товару',
+                category: 'chamomile', // ромашка
+                price: '25'
+            },
+            {
+                id: 5,
+                title: 'Ромашка синя',
+                img: 'ChamomileBlue.jpg',
+                desc: 'Опис товару',
+                category: 'chamomile', // ромашка
+                price: '25'
+            },
+            {
+                id: 6,
+                title: 'Тюльпан червоний',
+                img: 'TulipRed.jpg',
+                desc: 'Опис товару',
+                category: 'tulip', // Тюльпан
+                price: '30'
+            },
+            {
+                id: 7,
+                title: 'Тюльпан фіолетовий',
+                img: 'TulipViolet.jpg',
+                desc: 'Опис товару',
+                category: 'tulip', // Тюльпан
+                price: '30'
+            },
+            {
+                id: 8,
+                title: 'Тюльпан жовтий',
+                img: 'TulipYellow.jpg',
+                desc: 'Опис товару',
+                category: 'tulip', // Тюльпан
+                price: '30'
+            }],
         },
         reviewsPage: {
             reviewsData: [
@@ -144,6 +210,21 @@ let store = {
         this._callSubscriber(this._state);
     },
 
+    // вибрати категорію
+    chooseCategory(category) {
+        // для категорії 'all'
+        if (category === 'all') {
+            this._state.flowersPage.currentItems = this._state.flowersPage.flowers;
+            // після зміни state перемалювати все дерево
+            this._callSubscriber(this._state);
+            return;
+        }
+        // для решти категорій
+        this._state.flowersPage.currentItems = this._state.flowersPage.flowers.filter(el => el.category === category);
+
+        // після зміни state перемалювати все дерево
+        this._callSubscriber(this._state);
+    },
 
     // метод dispatch в собі містить багато сценаріїв в залежності від action.type
     dispatch(action) {

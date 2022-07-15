@@ -11,7 +11,7 @@ const Flowers = (props) => {
             {/* <Categories chooseCategory={props.chooseCategory} /> */}
             {/* <Items items={props.items} onAdd={props.onAdd} onShowItem={props.onShowItem} /> */}
 
-            <Categories categories={props.categories} />
+            <Categories categories={props.categories} chooseCategory={props.chooseCategory} />
             <Items items={props.items} onAdd={props.onAdd} />
 
 
