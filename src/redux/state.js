@@ -73,6 +73,24 @@ let store = {
             ],
             // orders - сюди будуть додаватися товари, які будуть відображені всередині корзини
             orders: [],
+            categories: [
+                {
+                    key: 'all',
+                    name: 'Всі'
+                },
+                {
+                    key: 'rose',
+                    name: 'Троянди'
+                },
+                {
+                    key: 'chamomile',
+                    name: 'Ромашки (хризантема)'
+                },
+                {
+                    key: 'tulip',
+                    name: 'Тюльпани'
+                }
+            ],
         },
         reviewsPage: {
             reviewsData: [
