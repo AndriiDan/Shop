@@ -159,6 +159,8 @@ let store = {
             }],
             // відображати модальне вікно з конкретним товаром при "true"
             showFullItem: false,
+            // об'єкт який відобразити в модальному вікні
+            fullItem: {}
         },
         reviewsPage: {
             reviewsData: [
@@ -229,18 +231,16 @@ let store = {
     },
 
     // метод для відображення модального вікна товару при натисненні на картинку товару
-    onShowItem() {
+    onShowItem(item) {
+        // об'єкт який відобразити в модальному вікні
+        this._state.flowersPage.fullItem = item;
+        // змінити значення на протилежне (false/true)
         this._state.flowersPage.showFullItem = !this._state.flowersPage.showFullItem;
 
         // після зміни state перемалювати все дерево
         this._callSubscriber(this._state);
     },
 
-    //   onShowItem(item) {
-    //     // для fullItem присвоєти отриманий конкретний item 
-    //     this.setState({ fullItem: item });
-    //     this.setState({ showFullItem: !this.state.showFullItem });
-    //   }
 
     // метод dispatch в собі містить багато сценаріїв в залежності від action.type
     dispatch(action) {

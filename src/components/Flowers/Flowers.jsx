@@ -19,7 +19,7 @@ const Flowers = (props) => {
             {/* {props.showFullItem && <ShowFullItem item={props.fullItem} onAdd={props.onAdd} onShowItem={props.onShowItem} />} */}
 
             {/* при showFullItem: true - відобразити <ShowFullItem /> */}
-            {props.showFullItem && <ShowFullItem />}
+            {props.showFullItem && <ShowFullItem item={props.fullItem} onAdd={props.onAdd} onShowItem={props.onShowItem} />}
         </div>
     )
 }
