@@ -1,7 +1,8 @@
 // константи для actionCreator та dispatch
 const CHOOSE_CATEGORY = 'CHOOSE-CATEGORY';
 const ADD_TO_ORDER = 'ADD-TO-ORDER';
-
+const DELETE_ORDER = 'DELETE-ORDER';
+const ON_SHOW_ITEM = 'ON-SHOW-ITEM';
 const ADD_NEW_REVIEW = 'ADD-NEW-REVIEW';
 const UPDATE_NEW_REVIEW_TEXT = 'UPDATE-NEW-REVIEW-TEXT';
 
@@ -220,13 +221,13 @@ let store = {
             };
             // після зміни state перемалювати все дерево
             this._callSubscriber(this._state);
-        } else if (action.type === "DELETE-ORDER") {
+        } else if (action.type === DELETE_ORDER) {
             // видалення товара з корзини
             // filter створить новий масив, в який ввійдуть всі елементи з orders окрім елемента, id якого сюди передається
             this._state.flowersPage.orders = this._state.flowersPage.orders.filter(el => el.id !== action.id);
             // після зміни state перемалювати все дерево
             this._callSubscriber(this._state);
-        } else if (action.type === 'ON-SHOW-ITEM') {
+        } else if (action.type === ON_SHOW_ITEM) {
             // метод для відображення модального вікна товару при натисненні на картинку товару
             // об'єкт який відобразити в модальному вікні
             this._state.flowersPage.fullItem = action.item;
@@ -259,7 +260,8 @@ let store = {
 // ActionCreator
 export const chooseCategoryActionCreator = (category) => ({ type: CHOOSE_CATEGORY, category: category }); // вибрати категорію
 export const addToOrderActionCreator = (item) => ({ type: ADD_TO_ORDER, item: item }); // додати товар в корзину
-
+export const deleteOrderActionCreator = (id) => ({ type: DELETE_ORDER, id: id }); // видалити конкретний товар з корзини
+export const onShowItemActionCreator = (item) => ({ type: ON_SHOW_ITEM, item: item }); // відкрити(закрити) модальне вікно
 export const addNewReviewActionCreator = () => ({ type: ADD_NEW_REVIEW }); // додати новий відгук
 export const updateNewReviewActionCreator = (text) => ({ type: UPDATE_NEW_REVIEW_TEXT, newText: text }); // оновити текст відгука
 

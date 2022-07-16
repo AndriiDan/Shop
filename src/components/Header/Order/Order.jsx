@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaTrash } from 'react-icons/fa';
+import { deleteOrderActionCreator } from '../../../redux/state';
 import classes from './Order.module.css';
 
 // к-та конкретного item в корзині
@@ -7,8 +8,8 @@ const Order = (props) => {
 
     let delOrder = () => {
         let id = props.item.id;
-        // метод видалення товару з корзини dispatch(action); + в метод передається id
-        props.dispatch({ type: 'DELETE-ORDER', id: id })
+        // метод видалення товару з корзини dispatch(deleteOrderActionCreator(id)); + в метод передається id
+        props.dispatch(deleteOrderActionCreator(id));
     }
 
     return (

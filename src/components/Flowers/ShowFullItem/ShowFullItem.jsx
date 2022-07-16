@@ -1,5 +1,5 @@
 import React from 'react';
-import { addToOrderActionCreator } from '../../../redux/state';
+import { addToOrderActionCreator, onShowItemActionCreator } from '../../../redux/state';
 import classes from './ShowFullItem.module.css';
 
 // к-та для відображення модального вікна вибраного товару
@@ -15,8 +15,8 @@ const ShowFullItem = (props) => {
             <div>
                 {/* img повинні знаходитися в папці publik/img */}
                 <img src={"./img/" + props.item.img} />
-                {/* метод dispatch(type: 'ON-SHOW-ITEM') закрити модальне вікно; + в метод передається item */}
-                <div className={classes.closeModWind} onClick={() => props.dispatch({ type: 'ON-SHOW-ITEM', item: props.item })}>X</div>
+                {/* метод dispatch(onShowItemActionCreator(props.item)) закрити модальне вікно; + в метод передається item */}
+                <div className={classes.closeModWind} onClick={() => props.dispatch(onShowItemActionCreator(props.item))}>X</div>
                 <h2>{props.item.title}</h2>
                 <p>{props.item.desc}</p>
                 <b>{props.item.price} грн.</b>

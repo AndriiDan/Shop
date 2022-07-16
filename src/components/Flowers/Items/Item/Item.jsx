@@ -1,5 +1,5 @@
 import React from 'react';
-import { addToOrderActionCreator } from '../../../../redux/state';
+import { addToOrderActionCreator, onShowItemActionCreator } from '../../../../redux/state';
 import classes from './Item.module.css';
 
 // к-та конкретного товару
@@ -14,8 +14,8 @@ const Item = (props) => {
     return (
         <div className={classes.item}>
             {/* img повинні знаходитися в папці publik/img */}
-            {/* метод dispatch(type: 'ON-SHOW-ITEM') показати товар у модальному вікні; + в метод передається item */}
-            <img src={"./img/" + props.item.img} onClick={() => props.dispatch({ type: 'ON-SHOW-ITEM', item: props.item })} />
+            {/* метод dispatch(onShowItemActionCreator(props.item)) показати товар у модальному вікні; + в метод передається item */}
+            <img src={"./img/" + props.item.img} onClick={() => props.dispatch(onShowItemActionCreator(props.item))} />
             <h2>{props.item.title}</h2>
             <p>{props.item.desc}</p>
             <b>{props.item.price} грн.</b>
