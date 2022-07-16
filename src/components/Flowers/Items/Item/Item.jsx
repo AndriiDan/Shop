@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { addToOrderActionCreator } from '../../../../redux/state';
 import classes from './Item.module.css';
 
 // к-та конкретного товару
@@ -6,8 +7,8 @@ const Item = (props) => {
 
     let addToOrder = () => {
         let item = props.item;
-        // метод додавання товару в корзину dispatch(action); + в метод передається item
-        props.dispatch({ type: 'ADD-TO-ORDER', item: item })
+        // метод додавання товару в корзину покупок dispatch(addToOrderActionCreator(item)); + в метод передається item
+        props.dispatch(addToOrderActionCreator(item));
     }
 
     return (

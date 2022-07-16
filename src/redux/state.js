@@ -1,3 +1,7 @@
+// константи для actionCreator та dispatch
+const CHOOSE_CATEGORY = 'CHOOSE-CATEGORY';
+const ADD_TO_ORDER = 'ADD-TO-ORDER';
+
 const ADD_NEW_REVIEW = 'ADD-NEW-REVIEW';
 const UPDATE_NEW_REVIEW_TEXT = 'UPDATE-NEW-REVIEW-TEXT';
 
@@ -187,7 +191,7 @@ let store = {
 
     // метод dispatch в собі містить багато сценаріїв в залежності від action.type
     dispatch(action) {
-        if (action.type === 'CHOOSE-CATEGORY') {
+        if (action.type === CHOOSE_CATEGORY) {
             // вибрати категорію
             // для категорії 'all'
             if (action.category === 'all') {
@@ -200,11 +204,10 @@ let store = {
             this._state.flowersPage.currentItems = this._state.flowersPage.flowers.filter(el => el.category === action.category);
             // після зміни state перемалювати все дерево
             this._callSubscriber(this._state);
-        } else if (action.type === 'ADD-TO-ORDER') {
+        } else if (action.type === ADD_TO_ORDER) {
             // додавання товарів в корзину
             // чи є в корзині елемент з конкретним id
             let isInArray = false;
-
             // перевірка, чи товар вже є в корзині
             this._state.flowersPage.orders.forEach(el => {
                 if (el.id === action.item.id) {
@@ -215,7 +218,6 @@ let store = {
             if (!isInArray) {
                 this._state.flowersPage.orders.push(action.item);
             };
-
             // після зміни state перемалювати все дерево
             this._callSubscriber(this._state);
         } else if (action.type === "DELETE-ORDER") {
@@ -255,8 +257,11 @@ let store = {
 }
 
 // ActionCreator
-export const addNewReviewActionCreator = () => ({ type: ADD_NEW_REVIEW })
-export const updateNewReviewActionCreator = (text) => ({ type: UPDATE_NEW_REVIEW_TEXT, newText: text })
+export const chooseCategoryActionCreator = (category) => ({ type: CHOOSE_CATEGORY, category: category }); // вибрати категорію
+export const addToOrderActionCreator = (item) => ({ type: ADD_TO_ORDER, item: item }); // додати товар в корзину
+
+export const addNewReviewActionCreator = () => ({ type: ADD_NEW_REVIEW }); // додати новий відгук
+export const updateNewReviewActionCreator = (text) => ({ type: UPDATE_NEW_REVIEW_TEXT, newText: text }); // оновити текст відгука
 
 // для можливості перегляду state в консолі (ввести store)
 window.store = store;
