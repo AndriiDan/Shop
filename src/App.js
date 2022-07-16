@@ -13,7 +13,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div className="wrapper">
-          <Header orders={this.props.state.flowersPage.orders} onDelete={this.props.onDelete} />
+          <Header orders={this.props.state.flowersPage.orders} dispatch={this.props.dispatch} />
           <div className="wrapper-content">
             <Routes>
               <Route path="/flowers" element={<Flowers items={this.props.state.flowersPage.currentItems} dispatch={this.props.dispatch}

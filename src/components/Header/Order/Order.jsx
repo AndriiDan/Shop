@@ -7,7 +7,8 @@ const Order = (props) => {
 
     let delOrder = () => {
         let id = props.item.id;
-        props.onDelete(id);
+        // метод видалення товару з корзини dispatch(action); + в метод передається id
+        props.dispatch({ type: 'DELETE-ORDER', id: id })
     }
 
     return (

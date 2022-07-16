@@ -186,14 +186,6 @@ let store = {
     },
 
 
-    // видалення товара з корзини
-    deleteOrder(id) {
-        // filter створить новий масив, в який ввійдуть всі елементи з orders окрім елемента, id якого сюди передається
-        this._state.flowersPage.orders = this._state.flowersPage.orders.filter(el => el.id !== id);
-        // після зміни state перемалювати все дерево
-        this._callSubscriber(this._state);
-    },
-
     // вибрати категорію
     chooseCategory(category) {
         // для категорії 'all'
@@ -242,6 +234,14 @@ let store = {
 
             // після зміни state перемалювати все дерево
             this._callSubscriber(this._state);
+        } else if (action.type === "DELETE-ORDER") {
+            // видалення товара з корзини
+            //   deleteOrder(id) {
+            // filter створить новий масив, в який ввійдуть всі елементи з orders окрім елемента, id якого сюди передається
+            this._state.flowersPage.orders = this._state.flowersPage.orders.filter(el => el.id !== action.id);
+            // після зміни state перемалювати все дерево
+            this._callSubscriber(this._state);
+            // },
         } else if (action.type === ADD_NEW_REVIEW) {
             // для додавання нового відгуку
             let newReview = {
