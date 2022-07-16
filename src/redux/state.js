@@ -185,27 +185,22 @@ let store = {
         this._callSubscriber = observer;
     },
 
-
-    // вибрати категорію
-    chooseCategory(category) {
-        // для категорії 'all'
-        if (category === 'all') {
-            this._state.flowersPage.currentItems = this._state.flowersPage.flowers;
-            // після зміни state перемалювати все дерево
-            this._callSubscriber(this._state);
-            return;
-        }
-        // для решти категорій
-        this._state.flowersPage.currentItems = this._state.flowersPage.flowers.filter(el => el.category === category);
-
-        // після зміни state перемалювати все дерево
-        this._callSubscriber(this._state);
-    },
-
-
     // метод dispatch в собі містить багато сценаріїв в залежності від action.type
     dispatch(action) {
-        if (action.type === 'ADD-TO-ORDER') {
+        if (action.type === 'CHOOSE-CATEGORY') {
+            // вибрати категорію
+            // для категорії 'all'
+            if (action.category === 'all') {
+                this._state.flowersPage.currentItems = this._state.flowersPage.flowers;
+                // після зміни state перемалювати все дерево
+                this._callSubscriber(this._state);
+                return;
+            }
+            // для решти категорій
+            this._state.flowersPage.currentItems = this._state.flowersPage.flowers.filter(el => el.category === action.category);
+            // після зміни state перемалювати все дерево
+            this._callSubscriber(this._state);
+        } else if (action.type === 'ADD-TO-ORDER') {
             // додавання товарів в корзину
             // чи є в корзині елемент з конкретним id
             let isInArray = false;

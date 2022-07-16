@@ -8,7 +8,7 @@ import ShowFullItem from './ShowFullItem/ShowFullItem';
 const Flowers = (props) => {
     return (
         <div>
-            <Categories categories={props.categories} chooseCategory={props.chooseCategory} />
+            <Categories categories={props.categories} dispatch={props.dispatch} />
             <Items items={props.items} dispatch={props.dispatch} />
 
             {/* при showFullItem: true - відобразити <ShowFullItem /> */}
