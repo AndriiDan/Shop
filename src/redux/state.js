@@ -202,17 +202,6 @@ let store = {
         this._callSubscriber(this._state);
     },
 
-    // метод для відображення модального вікна товару при натисненні на картинку товару
-    onShowItem(item) {
-        // об'єкт який відобразити в модальному вікні
-        this._state.flowersPage.fullItem = item;
-        // змінити значення на протилежне (false/true)
-        this._state.flowersPage.showFullItem = !this._state.flowersPage.showFullItem;
-
-        // після зміни state перемалювати все дерево
-        this._callSubscriber(this._state);
-    },
-
 
     // метод dispatch в собі містить багато сценаріїв в залежності від action.type
     dispatch(action) {
@@ -236,12 +225,18 @@ let store = {
             this._callSubscriber(this._state);
         } else if (action.type === "DELETE-ORDER") {
             // видалення товара з корзини
-            //   deleteOrder(id) {
             // filter створить новий масив, в який ввійдуть всі елементи з orders окрім елемента, id якого сюди передається
             this._state.flowersPage.orders = this._state.flowersPage.orders.filter(el => el.id !== action.id);
             // після зміни state перемалювати все дерево
             this._callSubscriber(this._state);
-            // },
+        } else if (action.type === 'ON-SHOW-ITEM') {
+            // метод для відображення модального вікна товару при натисненні на картинку товару
+            // об'єкт який відобразити в модальному вікні
+            this._state.flowersPage.fullItem = action.item;
+            // змінити значення на протилежне (false/true)
+            this._state.flowersPage.showFullItem = !this._state.flowersPage.showFullItem;
+            // після зміни state перемалювати все дерево
+            this._callSubscriber(this._state);
         } else if (action.type === ADD_NEW_REVIEW) {
             // для додавання нового відгуку
             let newReview = {

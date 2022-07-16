@@ -9,7 +9,7 @@ let rerenderEntireTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>
             <App state={state} dispatch={store.dispatch.bind(store)}
-                chooseCategory={store.chooseCategory.bind(store)} onShowItem={store.onShowItem.bind(store)} />
+                chooseCategory={store.chooseCategory.bind(store)} />
         </React.StrictMode>,
         document.getElementById('root')
     );

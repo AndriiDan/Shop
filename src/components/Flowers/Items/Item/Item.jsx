@@ -13,7 +13,8 @@ const Item = (props) => {
     return (
         <div className={classes.item}>
             {/* img повинні знаходитися в папці publik/img */}
-            <img src={"./img/" + props.item.img} onClick={() => props.onShowItem(props.item)} />
+            {/* метод dispatch(type: 'ON-SHOW-ITEM') показати товар у модальному вікні; + в метод передається item */}
+            <img src={"./img/" + props.item.img} onClick={() => props.dispatch({ type: 'ON-SHOW-ITEM', item: props.item })} />
             <h2>{props.item.title}</h2>
             <p>{props.item.desc}</p>
             <b>{props.item.price} грн.</b>
