@@ -5,7 +5,8 @@ import classes from './ShowFullItem.module.css';
 const ShowFullItem = (props) => {
     let addToOrder = () => {
         let item = props.item;
-        props.onAdd(item);
+        // метод додавання товару в корзину dispatch(action); + в метод передається item
+        props.dispatch({ type: 'ADD-TO-ORDER', item: item });
     }
 
     return (

@@ -186,26 +186,6 @@ let store = {
     },
 
 
-    // додавання товарів в корзину
-    addToOrder(item) {
-        // чи є в корзині елемент з конкретним id
-        let isInArray = false;
-
-        // перевірка, чи товар вже є в корзині
-        this._state.flowersPage.orders.forEach(el => {
-            if (el.id === item.id) {
-                isInArray = true
-            }
-        });
-        // якщо товара немає в корзині, то додати його в корзину в кінець масива
-        if (!isInArray) {
-            this._state.flowersPage.orders.push(item);
-        };
-
-        // після зміни state перемалювати все дерево
-        this._callSubscriber(this._state);
-    },
-
     // видалення товара з корзини
     deleteOrder(id) {
         // filter створить новий масив, в який ввійдуть всі елементи з orders окрім елемента, id якого сюди передається
@@ -244,7 +224,25 @@ let store = {
 
     // метод dispatch в собі містить багато сценаріїв в залежності від action.type
     dispatch(action) {
-        if (action.type === ADD_NEW_REVIEW) {
+        if (action.type === 'ADD-TO-ORDER') {
+            // додавання товарів в корзину
+            // чи є в корзині елемент з конкретним id
+            let isInArray = false;
+
+            // перевірка, чи товар вже є в корзині
+            this._state.flowersPage.orders.forEach(el => {
+                if (el.id === action.item.id) {
+                    isInArray = true
+                }
+            });
+            // якщо товара немає в корзині, то додати його в корзину в кінець масива
+            if (!isInArray) {
+                this._state.flowersPage.orders.push(action.item);
+            };
+
+            // після зміни state перемалювати все дерево
+            this._callSubscriber(this._state);
+        } else if (action.type === ADD_NEW_REVIEW) {
             // для додавання нового відгуку
             let newReview = {
                 id: 4,
@@ -260,6 +258,7 @@ let store = {
         } else if (action.type === UPDATE_NEW_REVIEW_TEXT) {
             // для оновлення тексту в textarea в компоненті AddReview
             this._state.reviewsPage.newReviewText = action.newText;
+            // після зміни state перемалювати все дерево
             this._callSubscriber(this._state);
         }
     }

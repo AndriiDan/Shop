@@ -9,10 +9,11 @@ const Flowers = (props) => {
     return (
         <div>
             <Categories categories={props.categories} chooseCategory={props.chooseCategory} />
-            <Items items={props.items} onAdd={props.onAdd} onShowItem={props.onShowItem} />
+            <Items items={props.items} dispatch={props.dispatch} onShowItem={props.onShowItem} />
 
             {/* при showFullItem: true - відобразити <ShowFullItem /> */}
-            {props.showFullItem && <ShowFullItem item={props.fullItem} onAdd={props.onAdd} onShowItem={props.onShowItem} />}
+            {props.showFullItem && <ShowFullItem item={props.fullItem} dispatch={props.dispatch}
+                onShowItem={props.onShowItem} />}
         </div>
     )
 }
