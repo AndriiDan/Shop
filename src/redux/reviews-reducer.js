@@ -3,24 +3,26 @@ const ADD_NEW_REVIEW = 'ADD-NEW-REVIEW';
 const UPDATE_NEW_REVIEW_TEXT = 'UPDATE-NEW-REVIEW-TEXT';
 
 const reviewsReducer = (state, action) => {
-
-    if (action.type === ADD_NEW_REVIEW) {
-        // для додавання нового відгуку
-        let newReview = {
-            id: 4,
-            review: state.newReviewText,
-            likesCount: 0
-        };
-        // додати в кінець масива новий відгук
-        state.reviewsData.push(newReview);
-        // обнулити весь текст з textarea компоненти AddReview
-        state.newReviewText = '';
-    } else if (action.type === UPDATE_NEW_REVIEW_TEXT) {
-        // для оновлення тексту в textarea в компоненті AddReview
-        state.newReviewText = action.newText;
+    switch (action.type) {
+        case ADD_NEW_REVIEW:
+            // для додавання нового відгуку
+            let newReview = {
+                id: 4,
+                review: state.newReviewText,
+                likesCount: 0
+            };
+            // додати в кінець масива новий відгук
+            state.reviewsData.push(newReview);
+            // обнулити весь текст з textarea компоненти AddReview
+            state.newReviewText = '';
+            return state;
+        case UPDATE_NEW_REVIEW_TEXT:
+            // для оновлення тексту в textarea в компоненті AddReview
+            state.newReviewText = action.newText;
+            return state;
+        default:
+            return state;
     }
-
-    return state;
 }
 
 // ActionCreator
