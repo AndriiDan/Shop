@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import store from "./redux/state";
+import store from "./redux/redux-store";
 
 // ф-ція для перемалювання всьго дерева
 let rerenderEntireTree = (state) => {
@@ -17,5 +17,10 @@ let rerenderEntireTree = (state) => {
 // відмалювати все дерево
 rerenderEntireTree(store.getState());
 
-// прокидуємо rerenderEntireTree в state.js в subscribe
-store.subscribe(rerenderEntireTree);
+// оновлення сторінок після зміни state; повідомити підписників
+store.subscribe(() => {
+    // state після зміни (reducer)
+    let state = store.getState();
+    // перемалювати все дерево з оновленими даними state (redux сам не оновлює, тільки повідомляє підписників, що state змінився)
+    rerenderEntireTree(state);
+});

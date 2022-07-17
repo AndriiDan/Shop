@@ -2,7 +2,17 @@
 const ADD_NEW_REVIEW = 'ADD-NEW-REVIEW';
 const UPDATE_NEW_REVIEW_TEXT = 'UPDATE-NEW-REVIEW-TEXT';
 
-const reviewsReducer = (state, action) => {
+// state для ініціалізації
+let initialState = {
+    reviewsData: [
+        { id: 1, review: "Дякую, молоці!", likesCount: 5 },
+        { id: 2, review: "Дуже гарні квіти.", likesCount: 10 },
+        { id: 3, review: "Замовлення доставили швидко. Дякую.", likesCount: 7 }
+    ],
+    newReviewText: ''
+}
+
+const reviewsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_REVIEW:
             // для додавання нового відгуку

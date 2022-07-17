@@ -4,8 +4,168 @@ const ADD_TO_ORDER = 'ADD-TO-ORDER';
 const DELETE_ORDER = 'DELETE-ORDER';
 const ON_SHOW_ITEM = 'ON-SHOW-ITEM';
 
+// state для ініціалізації
+let initialState = {
+    flowers: [
+        {
+            id: 1,
+            title: 'Червона троянда',
+            img: 'RoseRed.jpg',
+            desc: 'Опис товару',
+            category: 'rose',
+            price: '35'
+        },
+        {
+            id: 2,
+            title: 'Біла троянда',
+            img: 'RoseWhite.jpg',
+            desc: 'Опис товару',
+            category: 'rose',
+            price: '35'
+        },
+        {
+            id: 3,
+            title: 'Зелена троянда',
+            img: 'RoseGreen.jpg',
+            desc: 'Опис товару',
+            category: 'rose',
+            price: '35'
+        },
+        {
+            id: 4,
+            title: 'Ромашка біла',
+            img: 'ChamomileWhite.jpg',
+            desc: 'Опис товару',
+            category: 'chamomile', // ромашка
+            price: '25'
+        },
+        {
+            id: 5,
+            title: 'Ромашка синя',
+            img: 'ChamomileBlue.jpg',
+            desc: 'Опис товару',
+            category: 'chamomile', // ромашка
+            price: '25'
+        },
+        {
+            id: 6,
+            title: 'Тюльпан червоний',
+            img: 'TulipRed.jpg',
+            desc: 'Опис товару',
+            category: 'tulip', // Тюльпан
+            price: '30'
+        },
+        {
+            id: 7,
+            title: 'Тюльпан фіолетовий',
+            img: 'TulipViolet.jpg',
+            desc: 'Опис товару',
+            category: 'tulip', // Тюльпан
+            price: '30'
+        },
+        {
+            id: 8,
+            title: 'Тюльпан жовтий',
+            img: 'TulipYellow.jpg',
+            desc: 'Опис товару',
+            category: 'tulip', // Тюльпан
+            price: '30'
+        }
+    ],
+    // orders - сюди будуть додаватися товари, які будуть відображені всередині корзини
+    orders: [],
+    categories: [
+        {
+            key: 'all',
+            name: 'Всі'
+        },
+        {
+            key: 'rose',
+            name: 'Троянди'
+        },
+        {
+            key: 'chamomile',
+            name: 'Ромашки (хризантема)'
+        },
+        {
+            key: 'tulip',
+            name: 'Тюльпани'
+        }
+    ],
+    // зберігає елементи, які будуть показані користувачу; при першому завантаженні currentItems = flowers (незнаю як присвоїти, тому скопіював)
+    // currentItems: [this._state.flowersPage.flowers],
+    currentItems: [{
+        id: 1,
+        title: 'Червона троянда',
+        img: 'RoseRed.jpg',
+        desc: 'Опис товару',
+        category: 'rose',
+        price: '35'
+    },
+    {
+        id: 2,
+        title: 'Біла троянда',
+        img: 'RoseWhite.jpg',
+        desc: 'Опис товару',
+        category: 'rose',
+        price: '35'
+    },
+    {
+        id: 3,
+        title: 'Зелена троянда',
+        img: 'RoseGreen.jpg',
+        desc: 'Опис товару',
+        category: 'rose',
+        price: '35'
+    },
+    {
+        id: 4,
+        title: 'Ромашка біла',
+        img: 'ChamomileWhite.jpg',
+        desc: 'Опис товару',
+        category: 'chamomile', // ромашка
+        price: '25'
+    },
+    {
+        id: 5,
+        title: 'Ромашка синя',
+        img: 'ChamomileBlue.jpg',
+        desc: 'Опис товару',
+        category: 'chamomile', // ромашка
+        price: '25'
+    },
+    {
+        id: 6,
+        title: 'Тюльпан червоний',
+        img: 'TulipRed.jpg',
+        desc: 'Опис товару',
+        category: 'tulip', // Тюльпан
+        price: '30'
+    },
+    {
+        id: 7,
+        title: 'Тюльпан фіолетовий',
+        img: 'TulipViolet.jpg',
+        desc: 'Опис товару',
+        category: 'tulip', // Тюльпан
+        price: '30'
+    },
+    {
+        id: 8,
+        title: 'Тюльпан жовтий',
+        img: 'TulipYellow.jpg',
+        desc: 'Опис товару',
+        category: 'tulip', // Тюльпан
+        price: '30'
+    }],
+    // відображати модальне вікно з конкретним товаром при "true"
+    showFullItem: false,
+    // об'єкт який відобразити в модальному вікні
+    fullItem: {}
+}
+
 // reducer для сторінки flowersPage
-const flowersReducer = (state, action) => {
+const flowersReducer = (state = initialState, action) => {
     switch (action.type) {
         case CHOOSE_CATEGORY:
             // вибрати категорію
