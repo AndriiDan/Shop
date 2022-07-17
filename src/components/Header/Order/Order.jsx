@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaTrash } from 'react-icons/fa';
-import { deleteOrderActionCreator } from '../../../redux/state';
+import { deleteOrderActionCreator } from '../../../redux/flowers-reducer';
 import classes from './Order.module.css';
 
 // к-та конкретного item в корзині

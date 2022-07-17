@@ -1,5 +1,5 @@
 import React from 'react';
-import { addToOrderActionCreator, onShowItemActionCreator } from '../../../redux/state';
+import { addToOrderActionCreator, onShowItemActionCreator } from '../../../redux/flowers-reducer';
 import classes from './ShowFullItem.module.css';
 
 // к-та для відображення модального вікна вибраного товару

@@ -1,5 +1,5 @@
 import React from 'react';
-import { chooseCategoryActionCreator } from '../../../redux/state';
+import { chooseCategoryActionCreator } from '../../../redux/flowers-reducer';
 import classes from './Categories.module.css';
 
 // к-та для відображення категорій квітів
