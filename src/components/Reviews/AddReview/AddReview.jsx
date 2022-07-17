@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './AddReview.module.css';
-import { addNewReviewActionCreator, updateNewReviewActionCreator } from '../../../redux/state';
+import { addNewReviewActionCreator, updateNewReviewActionCreator } from '../../../redux/reviews-reducer';
 
 // компонент - "додати відгук"
 const AddReview = (props) => {

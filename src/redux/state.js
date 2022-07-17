@@ -1,8 +1,5 @@
 import flowersReducer from "./flowers-reducer";
-
-// const ON_SHOW_ITEM = 'ON-SHOW-ITEM';
-const ADD_NEW_REVIEW = 'ADD-NEW-REVIEW';
-const UPDATE_NEW_REVIEW_TEXT = 'UPDATE-NEW-REVIEW-TEXT';
+import reviewsReducer from "./reviews-reducer";
 
 let store = {
     // приватний
@@ -188,40 +185,15 @@ let store = {
         this._callSubscriber = observer;
     },
 
-    // метод dispatch в собі містить багато сценаріїв в залежності від action.type
+    // метод dispatch в собі містить багато сценаріїв в залежності від action.type. action поділені в свої reducer в залежності від сторінки
     dispatch(action) {
-
-        this._state.flowersPage = flowersReducer(this._state.flowersPage, action);
+        this._state.flowersPage = flowersReducer(this._state.flowersPage, action); // для сторінки "Квіти"
+        this._state.reviewsPage = reviewsReducer(this._state.reviewsPage, action); // для сторінки "Відгуки"
 
         // після зміни state перемалювати все дерево
         this._callSubscriber(this._state);
-
-
-        if (action.type === ADD_NEW_REVIEW) {
-            // для додавання нового відгуку
-            let newReview = {
-                id: 4,
-                review: this._state.reviewsPage.newReviewText,
-                likesCount: 0
-            };
-            // додати в кінець масива новий відгук
-            this._state.reviewsPage.reviewsData.push(newReview);
-            // обнулити весь текст з textarea компоненти AddReview
-            this._state.reviewsPage.newReviewText = '';
-            // після зміни state перемалювати все дерево
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_REVIEW_TEXT) {
-            // для оновлення тексту в textarea в компоненті AddReview
-            this._state.reviewsPage.newReviewText = action.newText;
-            // після зміни state перемалювати все дерево
-            this._callSubscriber(this._state);
-        }
     }
 }
-
-// ActionCreator
-export const addNewReviewActionCreator = () => ({ type: ADD_NEW_REVIEW }); // додати новий відгук
-export const updateNewReviewActionCreator = (text) => ({ type: UPDATE_NEW_REVIEW_TEXT, newText: text }); // оновити текст відгука
 
 // для можливості перегляду state в консолі (ввести store)
 window.store = store;
