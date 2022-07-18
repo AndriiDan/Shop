@@ -18,11 +18,6 @@ class App extends React.Component {
           <div className="wrapper-content">
             <Routes>
               <Route path="/flowers" element={<FlowersContainer store={this.props.store} />} />
-              {/* <Route path="/flowers" element={<Flowers
-                 items={this.props.state.flowersPage.currentItems} dispatch={this.props.dispatch}
-                 categories={this.props.state.flowersPage.categories} showFullItem={this.props.state.flowersPage.showFullItem}
-                fullItem={this.props.state.flowersPage.fullItem}
-               */}
               <Route path="/aboutUs" element={<AboutUs />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/reviews" element={<ReviewsContainer store={this.props.store} />} />

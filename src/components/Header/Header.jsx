@@ -5,7 +5,8 @@ import Navbar from './Navbar/Navbar';
 import ShowNothing from './ShowNothing/ShowNothing';
 import ShowOrders from './ShowOrders/ShowOrders';
 
-export default function Header(props) {
+// export default function Header(props) {
+const Header = (props) => {
 
     // хук для зміни cartOpen за допомогоє ф-ції setCartOpen
     let [cartOpen, setCartOpen] = useState(false);
@@ -34,3 +35,5 @@ export default function Header(props) {
         </header>
     )
 }
+
+export default Header;
