@@ -1,29 +1,8 @@
 import React, { useState } from 'react';
 import { FaShoppingBasket } from "react-icons/fa";
-import Order from './Order/Order';
 import classes from './Header.module.css';
 import Navbar from './Navbar/Navbar';
-
-// показати вибрані елементи в корзині
-const showOrders = (props) => {
-    // загальна вартість замовлення в корзині
-    let summa = 0;
-    // Number.parseFloat(el.price) - перетворюємо в число, оскільки в items.price: "" (рядок)
-    props.orders.forEach(el => summa += Number.parseFloat(el.price));
-
-    return (
-        <div>
-            {/* перебор кожного елемента в корзині */}
-            {props.orders.map(el => (
-                <Order key={el.id} item={el} delOrder={props.delOrder}
-                // dispatch={props.dispatch} 
-                />
-            ))}
-            {/* new Intl.NumberFormat().format(summa) - заокруглює суму до '2-х' знаків після коми (при цінах з 2-ма знаками після коми) */}
-            <p className={classes.summa}>Загальна вартість замовлення: {new Intl.NumberFormat().format(summa)} грн.</p>
-        </div>
-    )
-};
+import ShowOrders from './ShowOrders/ShowOrders';
 
 // якщо корзина пуста
 const showNothing = () => {
@@ -33,7 +12,6 @@ const showNothing = () => {
         </div>
     )
 };
-
 
 export default function Header(props) {
 
@@ -51,7 +29,9 @@ export default function Header(props) {
                 {cartOpen && (
                     <div className={classes.shop_cart}>
                         {props.orders.length > 0 ?
-                            showOrders(props) : showNothing()}
+                            // показати вибрані елементи в корзині
+                            <ShowOrders orders={props.orders} delOrder={props.delOrder} />
+                            : showNothing()}
                     </div>
                 )}
             </div>
