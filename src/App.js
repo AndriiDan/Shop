@@ -6,7 +6,7 @@ import Flowers from './components/Flowers/Flowers';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Office from './components/Office/Office';
-import Reviews from './components/Reviews/Reviews';
+import ReviewsContainer from './components/Reviews/ReviewsContainer';
 
 class App extends React.Component {
   render() {
@@ -21,9 +21,12 @@ class App extends React.Component {
                 fullItem={this.props.state.flowersPage.fullItem} />} />
               <Route path="/aboutUs" element={<AboutUs />} />
               <Route path="/contacts" element={<Contacts />} />
-              <Route path="/reviews" element={<Reviews reviewsData={this.props.state.reviewsPage.reviewsData}
-                newReviewText={this.props.state.reviewsPage.newReviewText}
-                dispatch={this.props.dispatch} />} />
+              <Route path="/reviews" element={<ReviewsContainer store={this.props.store}
+
+              // reviewsData={this.props.state.reviewsPage.reviewsData}
+              // newReviewText={this.props.state.reviewsPage.newReviewText}
+              // dispatch={this.props.dispatch}
+              />} />
               <Route path="/office" element={<Office />} />
             </Routes>
           </div>

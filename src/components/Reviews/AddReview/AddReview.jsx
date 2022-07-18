@@ -1,28 +1,30 @@
 import React from 'react';
 import classes from './AddReview.module.css';
-import { addNewReviewActionCreator, updateNewReviewActionCreator } from '../../../redux/reviews-reducer';
 
 // компонент - "додати відгук"
 const AddReview = (props) => {
+
     // посилання на елемент (textarea)
     let newReviewElement = React.createRef();
-    let addReview = () => {
-        // ф-ція додавання відгуку
-        props.dispatch(addNewReviewActionCreator())
+
+    // ф-ція додавання відгуку
+    let onAddReview = () => {
+        // callback з ReviewsContainer - ф-ція (через dispatch(action)) додавання відгуку
+        props.addReview();
     }
 
-    // обробник подій для textarea
+    // ф-ція обробник подій для textarea
     let onReviewChange = () => {
         // значення з textarea
         let text = newReviewElement.current.value;
-        // оновлення тексту в textarea через оновлення state
-        props.dispatch(updateNewReviewActionCreator(text))
+        // callback з ReviewsContainer - ф-ція (через dispatch(action)) - оновлення тексту в textarea через оновлення state
+        props.reviewChange(text);
     }
 
     return (
         <div className={classes.addReview}>
             <textarea ref={newReviewElement} onChange={onReviewChange} value={props.newReviewText} />
-            <button onClick={addReview}>Додати відгук</button>
+            <button onClick={onAddReview}>Додати відгук</button>
         </div>
     )
 }
