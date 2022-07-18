@@ -31,11 +31,6 @@ header {
     padding: 20px 20px 0 20px;
 }
 
-.empty h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
 .presentation {
     margin: 50px 0;
     background: url('../../img/bg.jpg');
