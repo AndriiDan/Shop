@@ -8,11 +8,11 @@ import ShowFullItem from './ShowFullItem/ShowFullItem';
 const Flowers = (props) => {
     return (
         <div>
-            <Categories categories={props.categories} dispatch={props.dispatch} />
-            <Items items={props.items} dispatch={props.dispatch} />
+            <Categories categories={props.categories} chooseCategory={props.chooseCategory} />
+            <Items items={props.items} addToOrder={props.addToOrder} showItem={props.showItem} />
 
             {/* при showFullItem: true - відобразити <ShowFullItem /> */}
-            {props.showFullItem && <ShowFullItem item={props.fullItem} dispatch={props.dispatch} />}
+            {props.showFullItem && <ShowFullItem item={props.fullItem} addToOrder={props.addToOrder} showItem={props.showItem} />}
         </div>
     )
 }
