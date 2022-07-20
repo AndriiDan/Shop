@@ -167,43 +167,70 @@ let initialState = {
 // reducer для сторінки flowersPage
 const flowersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case CHOOSE_CATEGORY:
+        case CHOOSE_CATEGORY: {
+
+            // копія state, щоб connect міг порівнювати зміни старого і нового state
+            let stateCopy = { ...state };
+            stateCopy.currentItems = [...state.currentItems];
+            stateCopy.flowers = [...state.flowers];
+
             // вибрати категорію
             // для категорії 'all'
             if (action.category === 'all') {
-                state.currentItems = state.flowers;
-                return state;
+                stateCopy.currentItems = stateCopy.flowers;
+                return stateCopy;
             }
             // для решти категорій
-            state.currentItems = state.flowers.filter(el => el.category === action.category);
-            return state;
-        case ADD_TO_ORDER:
+            stateCopy.currentItems = stateCopy.flowers.filter(el => el.category === action.category);
+            return stateCopy;
+        }
+
+        case ADD_TO_ORDER: {
+
+            // копія state, щоб connect міг порівнювати зміни старого і нового state
+            let stateCopy = { ...state };
+            stateCopy.orders = [...state.orders];
+
             // додавання товарів в корзину
             // чи є в корзині елемент з конкретним id
             let isInArray = false;
             // перевірка, чи товар вже є в корзині
-            state.orders.forEach(el => {
+            stateCopy.orders.forEach(el => {
                 if (el.id === action.item.id) {
                     isInArray = true
                 }
             });
             // якщо товара немає в корзині, то додати його в корзину в кінець масива
             if (!isInArray) {
-                state.orders.push(action.item);
+                stateCopy.orders.push(action.item);
             };
-            return state;
-        case DELETE_ORDER:
+            return stateCopy;
+        }
+
+        case DELETE_ORDER: {
+
+            // копія state, щоб connect міг порівнювати зміни старого і нового state
+            let stateCopy = { ...state };
+            stateCopy.orders = [...state.orders];
+
             // видалення товара з корзини
             // filter створить новий масив, в який ввійдуть всі елементи з orders окрім елемента, id якого сюди передається
-            state.orders = state.orders.filter(el => el.id !== action.id);
-            return state;
-        case ON_SHOW_ITEM:
+            stateCopy.orders = stateCopy.orders.filter(el => el.id !== action.id);
+            return stateCopy;
+        }
+        case ON_SHOW_ITEM: {
+
+            // копія state, щоб connect міг порівнювати зміни старого і нового state
+            let stateCopy = { ...state };
+            stateCopy.fullItem = { ...stateCopy.fullItem };
+
             // метод для відображення модального вікна товару при натисненні на картинку товару
             // об'єкт який відобразити в модальному вікні
-            state.fullItem = action.item;
+            stateCopy.fullItem = action.item;
             // змінити значення на протилежне (false/true)
-            state.showFullItem = !state.showFullItem;
-            return state;
+            stateCopy.showFullItem = !stateCopy.showFullItem;
+            return stateCopy;
+        }
         default:
             return state;
     }
