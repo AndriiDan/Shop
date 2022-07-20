@@ -12,4 +12,7 @@ let reducers = combineReducers({
 // створюємо store
 let store = createStore(reducers);
 
+// для можливості перегляду state в консолі (ввести store)
+window.store = store;
+
 export default store;
