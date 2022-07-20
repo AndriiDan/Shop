@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AboutUs from './components/AboutUs/AboutUs';
 import Contacts from './components/Contacts/Contacts';
-// import Flowers from './components/Flowers/Flowers';
 import FlowersContainer from './components/Flowers/FlowersContainer';
 import Footer from './components/Footer/Footer';
 import HeaderContainer from './components/Header/HeaderContainer';
@@ -14,19 +13,13 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div className="wrapper">
-          <HeaderContainer
-          //  store={this.props.store}
-          />
+          <HeaderContainer />
           <div className="wrapper-content">
             <Routes>
-              <Route path="/flowers" element={<FlowersContainer
-              //  store={this.props.store}
-              />} />
+              <Route path="/flowers" element={<FlowersContainer />} />
               <Route path="/aboutUs" element={<AboutUs />} />
               <Route path="/contacts" element={<Contacts />} />
-              <Route path="/reviews" element={<ReviewsContainer
-              //  store={this.props.store}
-              />} />
+              <Route path="/reviews" element={<ReviewsContainer />} />
               <Route path="/office" element={<Office />} />
             </Routes>
           </div>
