@@ -31,6 +31,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         delOrder: (id) => {
+            // callback для компоненти Order - видалити товар з корзини
             // actionCreator - метод видалення товару з корзини dispatch(deleteOrderActionCreator(id)); + в метод передається id
             let action = deleteOrderActionCreator(id);
             // виконання ф-ції видалення товару з корзини
