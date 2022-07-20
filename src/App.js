@@ -14,10 +14,14 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div className="wrapper">
-          <HeaderContainer store={this.props.store} />
+          <HeaderContainer
+          //  store={this.props.store}
+            />
           <div className="wrapper-content">
             <Routes>
-              <Route path="/flowers" element={<FlowersContainer store={this.props.store} />} />
+              <Route path="/flowers" element={<FlowersContainer
+              //  store={this.props.store}
+                />} />
               <Route path="/aboutUs" element={<AboutUs />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/reviews" element={<ReviewsContainer store={this.props.store} />} />
