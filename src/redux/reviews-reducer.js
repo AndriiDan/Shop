@@ -14,22 +14,34 @@ let initialState = {
 
 const reviewsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_NEW_REVIEW:
+        case ADD_NEW_REVIEW: {
+
+            // копія state, щоб connect міг порівнювати зміни старого і нового state
+            let stateCopy = { ...state };
+            stateCopy.reviewsData = [...stateCopy.reviewsData];
+
             // для додавання нового відгуку
             let newReview = {
                 id: 4,
-                review: state.newReviewText,
+                review: stateCopy.newReviewText,
                 likesCount: 0
             };
             // додати в кінець масива новий відгук
-            state.reviewsData.push(newReview);
+            stateCopy.reviewsData.push(newReview);
             // обнулити весь текст з textarea компоненти AddReview
-            state.newReviewText = '';
-            return state;
-        case UPDATE_NEW_REVIEW_TEXT:
+            stateCopy.newReviewText = '';
+            return stateCopy;
+        }
+
+        case UPDATE_NEW_REVIEW_TEXT: {
+
+            // копія state, щоб connect міг порівнювати зміни старого і нового state
+            let stateCopy = { ...state };
+
             // для оновлення тексту в textarea в компоненті AddReview
-            state.newReviewText = action.newText;
-            return state;
+            stateCopy.newReviewText = action.newText;
+            return stateCopy;
+        }
         default:
             return state;
     }
