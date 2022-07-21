@@ -223,14 +223,13 @@ const flowersReducer = (state = initialState, action) => {
             return stateCopy;
         }
 
-        case ON_SHOW_ITEM: {
+        case ON_SHOW_ITEM:
             // копія state, щоб connect міг порівнювати зміни старого і нового state
             return {
                 ...state,
                 fullItem: action.item, // об'єкт який відобразити в модальному вікні
                 showFullItem: !state.showFullItem // змінити значення на протилежне (false/true) відкрити/закрити мдальне вікно
             };
-        }
 
         default:
             return state;
