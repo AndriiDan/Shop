@@ -94,6 +94,7 @@ let initialState = {
     ],
     // зберігає елементи, які будуть показані користувачу; при першому завантаженні currentItems = flowers (незнаю як присвоїти, тому скопіював)
     // currentItems: [this._state.flowersPage.flowers],
+    // currentItems: [...this.flowers],
     currentItems: [{
         id: 1,
         title: 'Червона троянда',
@@ -168,11 +169,12 @@ let initialState = {
 const flowersReducer = (state = initialState, action) => {
     switch (action.type) {
         case CHOOSE_CATEGORY: {
-
             // копія state, щоб connect міг порівнювати зміни старого і нового state
-            let stateCopy = { ...state };
-            stateCopy.currentItems = [...state.currentItems];
-            stateCopy.flowers = [...state.flowers];
+            let stateCopy = {
+                ...state,
+                currentItems: [...state.currentItems],
+                flowers: [...state.flowers]
+            };
 
             // вибрати категорію
             // для категорії 'all'
@@ -186,10 +188,11 @@ const flowersReducer = (state = initialState, action) => {
         }
 
         case ADD_TO_ORDER: {
-
             // копія state, щоб connect міг порівнювати зміни старого і нового state
-            let stateCopy = { ...state };
-            stateCopy.orders = [...state.orders];
+            let stateCopy = {
+                ...state,
+                orders: [...state.orders]
+            };
 
             // додавання товарів в корзину
             // чи є в корзині елемент з конкретним id
@@ -208,29 +211,27 @@ const flowersReducer = (state = initialState, action) => {
         }
 
         case DELETE_ORDER: {
-
             // копія state, щоб connect міг порівнювати зміни старого і нового state
-            let stateCopy = { ...state };
-            stateCopy.orders = [...state.orders];
+            let stateCopy = {
+                ...state,
+                orders: [...state.orders]
+            };
 
             // видалення товара з корзини
             // filter створить новий масив, в який ввійдуть всі елементи з orders окрім елемента, id якого сюди передається
             stateCopy.orders = stateCopy.orders.filter(el => el.id !== action.id);
             return stateCopy;
         }
+
         case ON_SHOW_ITEM: {
-
             // копія state, щоб connect міг порівнювати зміни старого і нового state
-            let stateCopy = { ...state };
-            stateCopy.fullItem = { ...stateCopy.fullItem };
-
-            // метод для відображення модального вікна товару при натисненні на картинку товару
-            // об'єкт який відобразити в модальному вікні
-            stateCopy.fullItem = action.item;
-            // змінити значення на протилежне (false/true)
-            stateCopy.showFullItem = !stateCopy.showFullItem;
-            return stateCopy;
+            return {
+                ...state,
+                fullItem: action.item, // об'єкт який відобразити в модальному вікні
+                showFullItem: !state.showFullItem // змінити значення на протилежне (false/true) відкрити/закрити мдальне вікно
+            };
         }
+
         default:
             return state;
     }
