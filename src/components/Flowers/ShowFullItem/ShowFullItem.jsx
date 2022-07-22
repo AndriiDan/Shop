@@ -29,6 +29,10 @@ const ShowFullItem = (props) => {
                 <b>{props.item.price} грн.</b>
                 {/* при onClick елемент item буде додаватися в корзину (до масива oders в App) */}
                 <div className={classes.add_to_cart} onClick={onAddToOrder}>+</div>
+                {/* якщо isInArray = true, то відобразити "Товар у корзині" */}
+                {props.item.isInArray &&
+                    <div className={classes.inOrder}>Товар у корзині</div>
+                }
             </div>
         </div>
     )

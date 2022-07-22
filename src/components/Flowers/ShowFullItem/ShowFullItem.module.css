@@ -81,3 +81,11 @@
     transform: scale(1.25);
     background: red;
 }
+
+.inOrder {
+    position: absolute;
+    right: 70px;
+    bottom: 25px;
+    color: rgb(10, 85, 10);
+    font-weight: 600;
+}

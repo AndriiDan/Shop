@@ -49,3 +49,11 @@ main .add_to_cart {
 main .add_to_cart:hover {
     transform: scale(1.5) translateY(-5px);
 }
+
+.inOrder {
+    position: absolute;
+    right: 70px;
+    bottom: 25px;
+    color: rgb(10, 85, 10);
+    font-weight: 600;
+}

@@ -12,9 +12,7 @@ const showOrders = (props) => {
         <div>
             {/* перебор кожного елемента в корзині */}
             {props.orders.map(el => (
-                <Order key={el.id} item={el} delOrder={props.delOrder}
-                // dispatch={props.dispatch} 
-                />
+                <Order key={el.id} item={el} delOrder={props.delOrder} />
             ))}
             {/* new Intl.NumberFormat().format(summa) - заокруглює суму до '2-х' знаків після коми (при цінах з 2-ма знаками після коми) */}
             <p className={classes.summa}>Загальна вартість замовлення: {new Intl.NumberFormat().format(summa)} грн.</p>

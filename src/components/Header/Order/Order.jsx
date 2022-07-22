@@ -7,9 +7,9 @@ const Order = (props) => {
 
     // ф-ція видалення товару з корзини
     let onDelOrder = () => {
-        let id = props.item.id;
-        // callback з HeaderContainer - ф-ція (через dispatch(action)) - видалення товару з корзини; + в callback передається id
-        props.delOrder(id);
+        let item = props.item;
+        // callback з HeaderContainer - ф-ція (через dispatch(action)) - видалення товару з корзини; + в callback передається item
+        props.delOrder(item);
     }
 
     return (
