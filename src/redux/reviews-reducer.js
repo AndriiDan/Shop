@@ -42,7 +42,7 @@ const reviewsReducer = (state = initialState, action) => {
 }
 
 // ActionCreator
-export const addNewReviewActionCreator = () => ({ type: ADD_NEW_REVIEW }); // додати новий відгук
-export const updateNewReviewActionCreator = (text) => ({ type: UPDATE_NEW_REVIEW_TEXT, newText: text }); // оновити текст відгука
+export const addReview = () => ({ type: ADD_NEW_REVIEW }); // додати новий відгук
+export const updateNewReview = (text) => ({ type: UPDATE_NEW_REVIEW_TEXT, newText: text }); // оновити текст відгука
 
 export default reviewsReducer;
