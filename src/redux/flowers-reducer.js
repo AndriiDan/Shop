@@ -256,9 +256,9 @@ const flowersReducer = (state = initialState, action) => {
 }
 
 // ActionCreator
-export const chooseCategoryActionCreator = (category) => ({ type: CHOOSE_CATEGORY, category: category }); // вибрати категорію
-export const addToOrderActionCreator = (item) => ({ type: ADD_TO_ORDER, item: item }); // додати товар в корзину
+export const chooseCategory = (category) => ({ type: CHOOSE_CATEGORY, category: category }); // вибрати категорію
+export const addToOrder = (item) => ({ type: ADD_TO_ORDER, item: item }); // додати товар в корзину
 export const deleteOrderActionCreator = (item) => ({ type: DELETE_ORDER, item: item }); // видалити конкретний товар з корзини
-export const onShowItemActionCreator = (item) => ({ type: ON_SHOW_ITEM, item: item }); // відкрити(закрити) модальне вікно
+export const showItem = (item) => ({ type: ON_SHOW_ITEM, item: item }); // відкрити(закрити) модальне вікно
 
 export default flowersReducer;
