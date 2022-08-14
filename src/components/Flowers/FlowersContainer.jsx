@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 };
 
 // контейнерна компонента над презинтаційною (Flowers) компонентою
-const FlowersContainer = connect(mapStateToProps, { chooseCategory: chooseCategory, addToOrder: addToOrder, showItem: showItem })(Flowers);
+const FlowersContainer = connect(mapStateToProps, { chooseCategory, addToOrder, showItem })(Flowers);
 
 export default FlowersContainer;
 
