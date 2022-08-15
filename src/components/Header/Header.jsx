@@ -31,7 +31,7 @@ const Header = (props) => {
                 )}
             </div>
             {/* основний банер магазина */}
-            <div className={classes.presentation}></div>
+            {/* <div className={classes.presentation}></div> */}
         </header>
     )
 }
