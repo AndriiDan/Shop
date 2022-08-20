@@ -6,7 +6,8 @@ import FlowersContainer from './components/Flowers/FlowersContainer';
 import Footer from './components/Footer/Footer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import HomePage from './components/HomePage/HomePage';
-import Login from './components/Login/Login';
+// import Login from './components/Login/Login';
+import LoginContainer from './components/Login/LoginContainer';
 import Office from './components/Office/Office';
 import ReviewsContainer from './components/Reviews/ReviewsContainer';
 
@@ -24,7 +25,7 @@ class App extends React.Component {
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/reviews" element={<ReviewsContainer />} />
               <Route path="/office" element={<Office />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/login" element={<LoginContainer />} />
             </Routes>
           </div>
           <Footer />
