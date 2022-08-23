@@ -1,6 +1,29 @@
 import React from 'react';
 // import classes from 'Login.module.css';
 
+const Office = (props) => {
+    console.log(props)
+    // debugger;
+    // вийти з кабінету
+    let leaveOffice = () => {
+        //     // значення з input Login
+        //     let login = "";
+        //     // значення з input Password
+        //     let password = "";
+        //     // callback з LoginContainer - ф-ція (через dispatch(action)) відправлення форми
+        //     props.resetData(login, password);
+    }
+
+    return (
+        <div>
+            <h1>Особистий кабінет</h1>
+            <button onClick={leaveOffice}>Вийти</button>
+        </div>
+    )
+}
+
+
+
 const Login = (props) => {
     console.log(props)
 
@@ -24,80 +47,49 @@ const Login = (props) => {
         props.updatePasswordText(text);
     }
 
-    // // ф-ція для відправлення форми
-    // let onEnterData = () => {
-    //     // значення з input Login
-    //     let login = loginElement.current.value;
-    //     // значення з input Password
-    //     let password = passwordElement.current.value;
-    //     // callback з LoginContainer - ф-ція (через dispatch(action)) відправлення форми
-    //     props.enterData(login, password);
-    // }
+    // ф-ція для відправлення форми
+    let onEnterData = () => {
+        // значення з input Login
+        let login = loginElement.current.value;
+        // значення з input Password
+        let password = passwordElement.current.value;
+        // callback з LoginContainer - ф-ція (через dispatch(action)) відправлення форми
+        props.enterData(login, password);
+    }
+
+
 
     return (
         <div>
-            <h1>Вхід в особистий кабінет</h1>
-            <form>
-                <div>
-                    <input ref={loginElement} onChange={onLoginChange} value={props.newLoginText} placeholder={"Login"} />
-                </div>
-                <div>
-                    <input ref={passwordElement} onChange={onPasswordChange} value={props.newPasswordText} type={"password"} placeholder={"Password"} />
-                </div>
-                <div>
-                    <input type={"checkbox"} /> remember me
-                </div>
-                <div>
-                    <button
-                    //  onChange={onEnterData}
-                    >Login</button>
-                </div>
-            </form>
+            {props.login === "Login" && props.password === "Password"
+                ? Office()
+                : <div>
+                    <h1>Вхід в особистий кабінет</h1>
+                    {/* <form> */}
+                    <div>
+                        <input ref={loginElement} onChange={onLoginChange} value={props.newLoginText} placeholder={"Login"} />
+                    </div>
+                    <div>
+                        <input ref={passwordElement} onChange={onPasswordChange} value={props.newPasswordText}
+                            // type={"password"}
+                            placeholder={"Password"} />
+                    </div>
+                    <div>
+                        <input type={"checkbox"} /> remember me
+                    </div>
+                    <div>
+                        <button
+                            onClick={onEnterData}
+                        >Login</button>
+                    </div>
+                    {/* </form> */}
 
-            <h2>Введіть дані, щоб залогінитися</h2>
-            <div>Login: "Login"</div>
-            <div>Password: "Password"</div>
+                    <h2>Введіть дані, щоб залогінитися</h2>
+                    <div>Login: "Login"</div>
+                    <div>Password: "Password"</div>
+                </div>}
         </div>
     )
 }
 
 export default Login;
-
-// return (
-    //         <div className={classes.addReview}>
-    //             <textarea ref={newReviewElement} onChange={onReviewChange} value={props.newReviewText} />
-    //             <button onClick={onAddReview}>Додати відгук</button>
-    //         </div>
-    //     )
-
-
-
-// // компонент - "додати відгук"
-// const AddReview = (props) => {
-
-//     // посилання на елемент (textarea)
-//     let newReviewElement = React.createRef();
-
-//     // ф-ція обробник подій для textarea
-//     let onReviewChange = () => {
-//         // значення з textarea
-//         let text = newReviewElement.current.value;
-//         // callback з ReviewsContainer - ф-ція (через dispatch(action)) - оновлення тексту в textarea через оновлення state
-//         props.reviewChange(text);
-//     }
-
-//     // ф-ція додавання відгуку
-//     let onAddReview = () => {
-//         // callback з ReviewsContainer - ф-ція (через dispatch(action)) додавання відгуку
-//         props.addReview();
-//     }
-
-//     return (
-//         <div className={classes.addReview}>
-//             <textarea ref={newReviewElement} onChange={onReviewChange} value={props.newReviewText} />
-//             <button onClick={onAddReview}>Додати відгук</button>
-//         </div>
-//     )
-// }
-
-// export default AddReview;
