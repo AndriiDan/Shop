@@ -1,31 +1,8 @@
 import React from 'react';
+import Office from '../Office/Office';
 // import classes from 'Login.module.css';
 
-const Office = (props) => {
-    console.log(props)
-    // debugger;
-    // вийти з кабінету
-    let leaveOffice = () => {
-        //     // значення з input Login
-        //     let login = "";
-        //     // значення з input Password
-        //     let password = "";
-        //     // callback з LoginContainer - ф-ція (через dispatch(action)) відправлення форми
-        //     props.resetData(login, password);
-    }
-
-    return (
-        <div>
-            <h1>Особистий кабінет</h1>
-            <button onClick={leaveOffice}>Вийти</button>
-        </div>
-    )
-}
-
-
-
 const Login = (props) => {
-    console.log(props)
 
     // посилання на елемент (input Login)
     let loginElement = React.createRef(); // input Login
@@ -57,12 +34,10 @@ const Login = (props) => {
         props.enterData(login, password);
     }
 
-
-
     return (
         <div>
             {props.login === "Login" && props.password === "Password"
-                ? Office()
+                ? <Office resetData={props.resetData} />
                 : <div>
                     <h1>Вхід в особистий кабінет</h1>
                     {/* <form> */}
@@ -70,17 +45,13 @@ const Login = (props) => {
                         <input ref={loginElement} onChange={onLoginChange} value={props.newLoginText} placeholder={"Login"} />
                     </div>
                     <div>
-                        <input ref={passwordElement} onChange={onPasswordChange} value={props.newPasswordText}
-                            // type={"password"}
-                            placeholder={"Password"} />
+                        <input ref={passwordElement} onChange={onPasswordChange} value={props.newPasswordText} type={"password"} placeholder={"Password"} />
                     </div>
                     <div>
                         <input type={"checkbox"} /> remember me
                     </div>
                     <div>
-                        <button
-                            onClick={onEnterData}
-                        >Login</button>
+                        <button onClick={onEnterData}>Login</button>
                     </div>
                     {/* </form> */}
 

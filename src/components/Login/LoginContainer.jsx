@@ -12,7 +12,6 @@ const mapStateToProps = (state) => {
     }
 };
 
-
 // контейнерна компонента над перезинтаційною (Login) компонентою
 const LoginContainer = connect(mapStateToProps, {
     updateLoginText, updatePasswordText,
